@@ -1,0 +1,1229 @@
+{
+  "meta": {
+    "title": "Piano in azione",
+    "period": "2026-2027",
+    "updated": "2026-10-14",
+    "methodNote": "Mappatura preliminare basata sulle direttrici pubblicate nel Bilancio Sociale 2025. Il Piano Strategico Esecutivo 2026-2027 integrale deve ancora essere acquisito e utilizzato per la validazione finale."
+  },
+  "logicalOrder": {
+    "principle": "La priorità economica ordina il potenziale di beneficio; la priorità logica ordina le evidenze necessarie per decidere senza sovrastimare quel beneficio. Le attività di raccolta e analisi possono iniziare in parallelo, ma alcuni gate devono essere superati prima di approvare investimenti, assunzioni o riduzioni di outsourcing.",
+    "foundationIds": ["INT-08", "INT-02", "INT-03", "INT-05"],
+    "economicDecisionIds": ["INT-01", "INT-06", "INT-10"],
+    "paths": [
+      {
+        "id": "workforce",
+        "index": "A",
+        "kind": "critical",
+        "title": "Lavoro assistenziale, documenti e outsourcing",
+        "purpose": "Capire quante ore qualificate sono assorbite da attività amministrative evitabili e quanta capacità liberata può ridurre ore esterne o sostenere più assistenza.",
+        "note": "Il contratto infermieristico e il costo pieno possono essere analizzati subito; la decisione finale di internalizzazione deve però incorporare la capacità recuperabile misurata.",
+        "steps": [
+          { "label": "Mansioni reali", "ids": ["INT-08"] },
+          { "label": "Processi e documenti", "ids": ["INT-02", "INT-03"] },
+          { "label": "Automazione mirata", "ids": ["INT-04"] },
+          { "label": "Decisione make-or-buy", "ids": ["INT-01"] }
+        ]
+      },
+      {
+        "id": "capacity",
+        "index": "B",
+        "kind": "critical",
+        "title": "Domanda, costo marginale e saturazione",
+        "purpose": "Distinguere domanda teorica, persone compatibili e finanziabili, capacità realmente attivabile e margine di ogni nuovo ingresso.",
+        "note": "La lista d'attesa non diventa automaticamente ricavo: prima servono stato della domanda, vincoli di servizio e conto marginale per centro.",
+        "steps": [
+          { "label": "Domanda e presa in carico", "ids": ["INT-05"] },
+          { "label": "Costo-to-serve", "ids": ["INT-07"] },
+          { "label": "Recupero capacità", "ids": ["INT-06"] }
+        ]
+      },
+      {
+        "id": "procurement",
+        "index": "C",
+        "kind": "parallel",
+        "title": "Fornitori: cantiere parallelo",
+        "purpose": "Raccogliere contratti, scadenze, prezzi unitari e SLA senza attendere il completamento delle analisi assistenziali.",
+        "note": "Può partire subito. I risparmi si riconoscono solo dopo normalizzazione per volumi, qualità e costi di transizione.",
+        "steps": [
+          { "label": "Registro, analisi e negoziazione", "ids": ["INT-10"] }
+        ]
+      },
+      {
+        "id": "governance",
+        "index": "D",
+        "kind": "crosscutting",
+        "title": "Misurazione: presidio trasversale",
+        "purpose": "Definire prima dei piloti baseline, formula, fonte e owner affinché ore liberate, nuova capacità e risparmi non vengano confusi.",
+        "note": "Non è l'ultimo report: deve iniziare insieme ai primi rilievi e accompagnare tutti i cantieri fino al consuntivo.",
+        "steps": [
+          { "label": "KPI e regole di consuntivazione", "ids": ["INT-09"] }
+        ]
+      }
+    ],
+    "dependencies": [
+      { "from": "INT-08", "to": "INT-02", "type": "baseline", "level": "gating", "reason": "Le ore per ruolo, centro e turno trasformano l'impressione di carico burocratico in una baseline quantificabile." },
+      { "from": "INT-02", "to": "INT-04", "type": "prerequisite", "level": "gating", "reason": "Volumi, duplicazioni e punti di controllo definiscono i casi d'uso AI; senza questa mappa il server sarebbe un costo senza beneficio dimostrabile." },
+      { "from": "INT-03", "to": "INT-04", "type": "prerequisite", "level": "gating", "reason": "Dati autorevoli e workflow ridisegnati devono precedere l'automazione, altrimenti si digitalizzano duplicazioni e archivi paralleli." },
+      { "from": "INT-08", "to": "INT-01", "type": "sizing", "level": "influencing", "reason": "La distribuzione reale delle attività chiarisce quanta copertura infermieristica interna esiste e quanta parte è assorbita da compiti non assistenziali." },
+      { "from": "INT-02", "to": "INT-01", "type": "conversion", "level": "influencing", "reason": "Le ore documentali eliminabili cambiano il fabbisogno di ore esterne solo se sono recuperate sui turni e convertite in copertura effettiva." },
+      { "from": "INT-04", "to": "INT-01", "type": "evidence", "level": "influencing", "reason": "Il pilota digitale fornisce il dato prima-dopo necessario a ridimensionare l'outsourcing senza supporre che ogni ora teorica diventi risparmio." },
+      { "from": "INT-05", "to": "INT-07", "type": "baseline", "level": "gating", "reason": "Domanda, presenze e capacità attivabile sono il denominatore del costo per posto e della valutazione marginale." },
+      { "from": "INT-08", "to": "INT-07", "type": "baseline", "level": "gating", "reason": "FTE e mansioni reali permettono di attribuire correttamente il costo del personale ai servizi e alle soglie di capacità." },
+      { "from": "INT-05", "to": "INT-06", "type": "prerequisite", "level": "gating", "reason": "Compatibilità, finanziabilità e cause di attesa spiegano se i posti vuoti possono davvero essere occupati." },
+      { "from": "INT-07", "to": "INT-06", "type": "sizing", "level": "gating", "reason": "Il costo marginale decide se l'aumento della saturazione genera contribuzione positiva o richiede una nuova soglia di organico." },
+      { "from": "INT-07", "to": "INT-01", "type": "sizing", "level": "gating", "reason": "Il confronto make-or-buy richiede lo stesso perimetro di costo: ora esterna contro costo aziendale pieno della copertura interna." },
+      { "from": "INT-03", "to": "INT-10", "type": "enabling", "level": "influencing", "reason": "Un registro contratti e un ciclo acquisti tracciato rendono confrontabili rinnovi, volumi, SLA e risparmi effettivi." },
+      { "from": "INT-09", "to": "INT-01", "type": "measurement", "level": "influencing", "reason": "Baseline e regole di consuntivazione impediscono di attribuire alla riorganizzazione variazioni di costo dovute a volumi o mercato del lavoro." },
+      { "from": "INT-09", "to": "INT-06", "type": "measurement", "level": "influencing", "reason": "Proventi aggiuntivi, costi incrementali e tempi di ingresso devono essere misurati su un periodo omogeneo." },
+      { "from": "INT-09", "to": "INT-10", "type": "measurement", "level": "influencing", "reason": "Il risparmio fornitore va normalizzato per quantità, mix e qualità prima di entrare nel beneficio misurato." }
+    ],
+    "decisionGates": [
+      { "id": "G1", "title": "Prima di comprare tecnologia", "rule": "Mappa del processo, volumi, tempo iniziale e criterio di qualità devono essere definiti." },
+      { "id": "G2", "title": "Prima di ridurre outsourcing o modificare organico", "rule": "Le ore liberate devono essere osservate sui turni e convertite in capacità interna o costo esterno evitabile." },
+      { "id": "G3", "title": "Prima di dichiarare un beneficio", "rule": "Servono baseline, periodo, fonte, owner e confronto al netto di volumi, tariffe ed effetti esterni." }
+    ]
+  },
+  "legalGovernance": {
+    "note": "Screening operativo preliminare, non parere legale. Il livello indica quanto il vincolo condiziona la decisione: la validazione compete a DPO/RPD, consulente del lavoro, Direzione e rappresentanze sindacali secondo il caso concreto.",
+    "stages": [
+      {
+        "id": "L1",
+        "level": "review",
+        "title": "Raccogliere tempi e criticità dei processi",
+        "purpose": "Questionario, interviste e campionamento devono descrivere attività e flussi, non classificare la produttività delle singole persone.",
+        "legal": "Se ruolo, centro, turno o metadati rendono identificabile il rispondente si applica il GDPR: finalità, base giuridica, informativa, minimizzazione, accessi e conservazione. Il consenso del dipendente non è normalmente la base più solida.",
+        "union": "Informazione e confronto preventivo con RSU/RSA sono coerenti con l'art. 6 CCNL ANFFAS perché la rilevazione prepara interventi sull'organizzazione del lavoro. Per il solo questionario aggregato non si presume un accordo ex art. 4.",
+        "gate": "DPO approva configurazione e informativa; risultati solo aggregati; nessun nome o dato di ospiti; gruppi piccoli accorpati; partecipazione e tempo di compilazione chiariti.",
+        "owners": "DPO/RPD · HR · Direzioni Servizi · RSU/RSA",
+        "initiativeIds": ["INT-08", "INT-02", "INT-03"]
+      },
+      {
+        "id": "L2",
+        "level": "review",
+        "title": "Osservare fascicoli, attività e passaggi reali",
+        "purpose": "Time study, osservazione sul turno e analisi dei fascicoli aumentano il valore dell'evidenza ma anche il rischio di identificare lavoratori e persone assistite.",
+        "legal": "Limitare il campione, separare identità e misure, usare dati clinici solo se indispensabili e autorizzare nominativamente chi accede. Segreto professionale, regole sanitarie e accreditamento impediscono di eliminare documentazione necessaria.",
+        "union": "Condividere metodologia, durata e divieto di uso individuale. Se la rilevazione diventa continua o alimentata da log nominativi, rivalutare l'art. 4 dello Statuto dei lavoratori.",
+        "gate": "Protocollo di osservazione scritto, elenco degli autorizzati, dataset pseudonimizzato, soglia minima di aggregazione e canale separato per adesioni alle interviste.",
+        "owners": "Direzione Sanitaria · DPO/RPD · Qualità · HR · RLS/RSU se necessario",
+        "initiativeIds": ["INT-02", "INT-05", "INT-08"]
+      },
+      {
+        "id": "L3",
+        "level": "stop",
+        "title": "Progettare workflow, cartella elettronica e AI",
+        "purpose": "La tecnologia può trasformare una semplice analisi organizzativa in trattamento sistematico di dati sanitari o monitoraggio dell'attività lavorativa.",
+        "legal": "Servono privacy by design, ruoli e contratti con i fornitori, sicurezza, log proporzionati e valutazione della necessità di una DPIA. Se lo strumento consente controllo a distanza, l'art. 4 può richiedere accordo RSU/RSA o autorizzazione INL prima dell'uso.",
+        "union": "Confronto prima del pilota; accordo specifico quando le funzionalità producono controllo a distanza. L'AI non deve assegnare punteggi, turni o conseguenze contrattuali senza distinta verifica normativa e umana.",
+        "gate": "Nessun pilota su dati reali finché non sono approvati DPIA o screening, matrice accessi, tempi di conservazione, controllo umano, procedura incidenti e posizione ex art. 4.",
+        "owners": "DPO/RPD · IT · Direzione Sanitaria · Consulente del lavoro · RSU/RSA",
+        "initiativeIds": ["INT-03", "INT-04", "INT-09"]
+      },
+      {
+        "id": "L4",
+        "level": "ready",
+        "title": "Validare la capacità effettivamente recuperata",
+        "purpose": "Le ore liberate devono essere misurate a livello di processo e turno, senza trasformare il KPI in una graduatoria individuale.",
+        "legal": "Usare dati aggregati e coerenti con la finalità dichiarata. Non riutilizzare questionari e log per procedimenti disciplinari, valutazioni o rinnovi contrattuali senza un autonomo presupposto e una nuova informativa.",
+        "union": "Restituire risultati aggregati e metodologia alle rappresentanze; distinguere capacità assistenziale recuperata, qualità e costo evitato.",
+        "gate": "Baseline e prima-dopo validati; indicatori non nominativi; evidenza che il tempo è tornato sul servizio o ha evitato un costo reale.",
+        "owners": "Controllo di Gestione · DPO/RPD · Direzioni Servizi · RSU/RSA",
+        "initiativeIds": ["INT-02", "INT-07", "INT-09"]
+      },
+      {
+        "id": "L5",
+        "level": "stop",
+        "title": "Decidere make-or-buy e rivedere i fornitori",
+        "purpose": "Prima di ridurre il servizio infermieristico esterno occorre qualificare il rapporto reale: appalto, somministrazione o incarico professionale producono poteri e tutele differenti.",
+        "legal": "Nell'appalto il fornitore mantiene organizzazione, direzione e rischio; nella somministrazione la Fondazione dirige l'attività ma il potere disciplinare resta all'agenzia; per i professionisti va preservata l'autonomia effettiva. Verificare clausole, preavvisi, continuità e sicurezza.",
+        "union": "Il CCNL ANFFAS richiede informazione, consultazione e confronto sull'organizzazione del lavoro e informazione preventiva per esternalizzazioni o terziarizzazioni. Coinvolgere anche il fornitore e le sue rappresentanze quando incidono sui suoi dipendenti.",
+        "gate": "Mappa contrattuale per centro e fornitore, parere del consulente del lavoro, confronto sindacale, piano di continuità clinica e assenza di conseguenze individuali fondate sul questionario.",
+        "owners": "Direzione · HR · Acquisti · Consulente del lavoro · Direzione Sanitaria · RSU/RSA",
+        "initiativeIds": ["INT-01", "INT-10"]
+      },
+      {
+        "id": "L6",
+        "level": "stop",
+        "title": "Modificare organico, turni o mansioni",
+        "purpose": "Il business case non autorizza da solo cambiamenti del rapporto di lavoro: servono standard assistenziali, sicurezza, continuità e procedure contrattuali.",
+        "legal": "Verificare mansioni e inquadramenti, orario, riposi, sicurezza, standard di accreditamento, responsabilità professionali e procedure applicabili. Le stime non possono giustificare automatismi su esuberi o rinnovi.",
+        "union": "Attivare informazione, confronto o contrattazione di secondo livello secondo l'impatto concreto su organizzazione, turni, quantità e qualità del servizio.",
+        "gate": "Scenario organizzativo completo, impatto su persone e sicurezza, confronto sindacale concluso e decisione formalizzata dalla Direzione competente.",
+        "owners": "Direzione Generale · HR · Direzioni Servizi · RSPP/RLS · RSU/RSA",
+        "initiativeIds": ["INT-01", "INT-06", "INT-08"]
+      },
+      {
+        "id": "L7",
+        "level": "ready",
+        "title": "Consuntivare e conservare solo ciò che serve",
+        "purpose": "Il risultato finale deve dimostrare il beneficio senza mantenere indefinitamente dati grezzi o identificativi.",
+        "legal": "Applicare il periodo di conservazione dichiarato, cancellare o anonimizzare i dati grezzi e limitare gli accessi. Conservare il metodo, gli aggregati e le decisioni, non profili individuali superflui.",
+        "union": "Condividere esiti aggregati e scostamenti; riaprire il confronto se i risultati sostengono nuove modifiche organizzative.",
+        "gate": "Verbale di validazione, evidenza del calcolo, chiusura degli accessi temporanei e cancellazione secondo retention.",
+        "owners": "Data owner · Controllo di Gestione · DPO/RPD · Direzione",
+        "initiativeIds": ["INT-09"]
+      }
+    ],
+    "stopRules": [
+      { "title": "Nessuna decisione individuale dal questionario", "rule": "Le risposte non determinano valutazioni, turni, disciplina, rinnovi o cessazioni; servirebbero finalità, basi e procedure autonome." },
+      { "title": "Nessun monitoraggio prima del vaglio ex art. 4", "rule": "Se log o strumenti consentono controllo a distanza, fermare il pilota finché non sono definiti presupposti, informazione e, quando richiesto, accordo o autorizzazione." },
+      { "title": "Nessuna riduzione dell'esterno senza qualificare il contratto", "rule": "Appalto, somministrazione e P.IVA non sono intercambiabili: cambiano poteri, interlocutori sindacali e responsabilità." },
+      { "title": "Nessuna automazione della responsabilità clinica", "rule": "Precompilazione, ricerca e controlli possono assistere; validazione e decisione professionale restano umane e tracciabili." }
+    ],
+    "externalWorkers": [
+      {
+        "type": "Appalto di servizio",
+        "employer": "Cooperativa o società appaltatrice",
+        "direction": "Il fornitore conserva organizzazione e potere direttivo; la Fondazione coordina requisiti del servizio, qualità clinica e sicurezza.",
+        "protections": "GDPR, Statuto verso il proprio datore, CCNL del fornitore, sicurezza e rappresentanza presso l'appaltatore.",
+        "projectRule": "Questionario concordato con il fornitore; nessuna classifica o gestione disciplinare diretta dei suoi infermieri."
+      },
+      {
+        "type": "Somministrazione",
+        "employer": "Agenzia per il lavoro",
+        "direction": "La Fondazione può dirigere l'attività durante la missione; il potere disciplinare resta all'agenzia.",
+        "protections": "Parità complessiva di trattamento, sicurezza come gli interni e diritti sindacali anche presso l'utilizzatore.",
+        "projectRule": "Coinvolgere agenzia e lavoratori; segnalazioni individuali seguono il canale dell'agenzia, non il questionario."
+      },
+      {
+        "type": "Libera professione",
+        "employer": "Professionista autonomo",
+        "direction": "La Fondazione verifica contratto, risultato e regole cliniche, preservando l'autonomia professionale effettiva.",
+        "protections": "GDPR, contratto, sicurezza, non discriminazione, segreto e deontologia; non tutte le tutele del subordinato si applicano automaticamente.",
+        "projectRule": "Evitare un uso del form che introduca controllo e subordinazione di fatto; verificare i rapporti continuativi ed etero-organizzati."
+      }
+    ],
+    "sourceNote": "Valutazione preliminare al 14 ottobre 2026. Riferimenti principali: GDPR; artt. 4 e 8 L. 300/1970; artt. 6-7 CCNL ANFFAS; D.Lgs. 81/2015 sulla somministrazione; D.Lgs. 81/2008 sulla sicurezza negli appalti."
+  },
+  "axes": [
+    { "id": "sostenibilita", "index": "01", "name": "Sostenibilità", "color": "#1f6654", "description": "Equilibrio economico, capacità e uso responsabile delle risorse." },
+    { "id": "qualita", "index": "02", "name": "Qualità dei servizi", "color": "#4169e1", "description": "Continuità, appropriatezza e qualità di vita delle persone accolte." },
+    { "id": "competenze", "index": "03", "name": "Competenze", "color": "#b36b26", "description": "Sviluppo professionale, benessere e responsabilità organizzativa." },
+    { "id": "innovazione", "index": "04", "name": "Innovazione", "color": "#7b5bb5", "description": "Tecnologia utile, nuovi modelli e miglioramento dei processi." },
+    { "id": "reputazione", "index": "05", "name": "Reputazione istituzionale", "color": "#bb5060", "description": "Evidenze, trasparenza e affidabilità verso territorio e stakeholder." }
+  ],
+  "initiatives": [
+    {
+      "id": "INT-01",
+      "title": "Internalizzazione ibrida del servizio infermieristico",
+      "status": "partial",
+      "confidence": 72,
+      "axisIds": ["sostenibilita", "qualita", "competenze"],
+      "owner": "Direzione Servizi Adulti · Risorse Umane · Acquisti",
+      "summary": "Verificare se il nucleo stabile di assistenza infermieristica delle RSD può essere assunto direttamente, mantenendo il fornitore come capacità di riserva.",
+      "problem": "Nel 2025 il servizio infermieristico esterno vale circa 742 mila euro; 684 mila sono concentrati nelle due RSD. L'organico dipendente pubblicato non evidenzia una capacità infermieristica operativa proporzionata al servizio.",
+      "essay": {
+        "overview": "Il punto non è stabilire in astratto se un infermiere dipendente costi meno di un fornitore, ma capire quale parte della copertura ordinaria e prevedibile delle RSD possa essere prodotta internamente con continuità. Le strutture residenziali richiedono presenza infermieristica sulle ventiquattro ore, quindi il costo esterno incorpora anche disponibilità, turni difficili, sostituzioni e rischio di scopertura. Una semplice assunzione del tipo ‘fattura elevata uguale risparmio certo’ sarebbe perciò fuorviante.",
+        "analysis": "Dai costi contabilizzati 2025 emergono circa 742.360 euro per servizio infermieristico esterno, di cui circa 684 mila concentrati nelle due RSD. Nei documenti pubblici è chiaramente individuabile un coordinamento infermieristico interno, ma non una dotazione dipendente sufficiente a spiegare la copertura ordinaria; questo rende plausibile l'ipotesi di una capacità interna insufficiente, non la dimostra ancora turno per turno. L'intervento proposto è ibrido: internalizzare il nucleo stabile e lasciare all'esterno assenze, picchi e turni che il mercato del lavoro rende difficili da coprire.",
+        "estimateMethod": "L'intervallo preliminare di 70-130 mila euro annui è uno scenario di margine operativo, non la differenza fra fatture e RAL. La formula corretta è: spesa esterna realmente sostituibile meno costo aziendale pieno degli assunti, maggiorazioni notturne e festive, ferie, malattie, formazione, selezione e quota di fornitore mantenuta come riserva. L'ordine di grandezza ipotizza che solo una parte dei 742 mila euro sia stabilmente internalizzabile e che il differenziale unitario resti positivo dopo tutti questi costi.",
+        "missingInformation": "Ore acquistate, tariffa per fascia oraria, turni effettivamente coperti, clausole contrattuali, assenze, scoperture e costo pieno di una pianta turni interna decidono quasi interamente la stima. Se le tariffe esterne includono un servizio molto flessibile o se non si riesce a reclutare, il beneficio può scendere verso zero. Se invece molte ore diurne e programmabili sono acquistate a premio e l'organico è reclutabile, la parte alta dell'intervallo diventa più credibile.",
+        "decisionRule": "Procedere solo dopo una simulazione di almeno tre configurazioni di turno e un confronto omogeneo per ora coperta. Il pilota è positivo se riduce il costo per ora effettiva senza aumentare scoperture, straordinari, turnover o rischio clinico. Il risparmio si registra a consuntivo soltanto sulle fatture cessate al netto del costo completo delle assunzioni e del contratto residuo."
+      },
+      "proposal": "Ricostruire ore e tariffe, progettare la pianta turni e internalizzare progressivamente la copertura ordinaria. Conservare un contratto esterno ridotto per assenze, picchi e turni scoperti.",
+      "nextStep": "Acquisire contratto, fatture e ore 2025",
+      "compliance": {
+        "level": "critical",
+        "summary": "La decisione incide contemporaneamente su contratti di fornitura, organizzazione del lavoro, continuità clinica e tutele degli infermieri esterni.",
+        "checks": [
+          { "area": "Rapporto esterno", "action": "Classificare appalto, somministrazione o P.IVA per sede e fornitore", "trigger": "Cambia chi esercita il potere direttivo, chi deve essere coinvolto e come possono essere usati i dati raccolti." },
+          { "area": "Relazioni sindacali", "action": "Informare e confrontarsi con RSU/RSA prima del disegno organizzativo", "trigger": "CCNL ANFFAS: organizzazione del lavoro, funzionamento dei servizi e innovazioni organizzative." },
+          { "area": "Sicurezza e qualità", "action": "Validare turni, standard e continuità con Direzione Sanitaria e RSPP", "trigger": "L'eventuale risparmio non può ridurre copertura, riposi, sicurezza o responsabilità professionale." }
+        ],
+        "gate": "Non approvare internalizzazione o riduzione di ore esterne senza mappa contrattuale, confronto sindacale, simulazione completa dei turni e piano di continuità."
+      },
+      "benefit": {
+        "priorityScore": 95,
+        "primaryType": "Risparmio di costo e continuità",
+        "statement": "Riduzione della spesa esterna ordinaria, maggiore continuità del team e migliore governo dei turni, mantenendo capacità esterna di riserva.",
+        "annualLow": 70000,
+        "annualHigh": 130000,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Scenario preliminare sul costo esterno 2025 di €742.360. Non è utile netto: il margine dipende da ore acquistate, costo pieno delle assunzioni, assenze e maggiorazioni.",
+        "monetizationStatus": "scenario"
+      },
+      "contexts": [
+        { "name": "RSD San Fermo", "type": "Residenziale", "evidence": "€390.523 di servizio esterno; 60 posti; assistenza infermieristica nelle 24 ore." },
+        { "name": "RSD Sesto Calende", "type": "Residenziale", "evidence": "€293.648 di servizio esterno; 35 posti; assistenza infermieristica nelle 24 ore." },
+        { "name": "Sede · HR e Acquisti", "type": "Funzione centrale", "evidence": "Contratti, recruiting, costo pieno e governo del fornitore." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Ore, fasce, tariffe, presenze contemporanee", "status": "active" },
+        { "name": "Disegno", "description": "FTE, turni, costo pieno e soglia di pareggio", "status": "blocked" },
+        { "name": "Pilota", "description": "5-6 assunzioni e riduzione graduale delle ore esterne", "status": "planned" },
+        { "name": "Scala", "description": "Estensione alla seconda RSD e contratto di backup", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Costo infermieristico per ora", "baseline": "Da acquisire", "target": "-10% / -15%", "source": "Contratto + fatture" },
+        { "name": "Quota ore ordinarie interne", "baseline": "Non determinata", "target": "60% / 75%", "source": "Turni e presenze" },
+        { "name": "Spesa esterna annua", "baseline": "€742.360", "target": "-€70k / -€130k (scenario)", "source": "Costi 2025" },
+        { "name": "Turni scoperti", "baseline": "Da acquisire", "target": "<1%", "source": "Rilevazione turni" }
+      ],
+      "dataNeeds": [
+        "Ore fatturate per sede, fascia oraria e professionista",
+        "Tariffe ordinarie, notturne e festive e minimi contrattuali",
+        "FTE infermieristici interni, vacanti e coordinamento",
+        "Standard rendicontati e presenze minime per struttura",
+        "Tempi di selezione, turnover e assenze del profilo infermieristico"
+      ],
+      "risks": [
+        { "name": "Reclutamento", "detail": "La carenza di infermieri può richiedere superminimi o tempi più lunghi." },
+        { "name": "Rigidità", "detail": "Una pianta troppo stretta genera straordinari e riacquisto urgente di ore." }
+      ],
+      "notes": "Analisi pubblica avanzata; manca il dato determinante delle ore acquistate."
+    },
+    {
+      "id": "INT-02",
+      "title": "Riduzione del carico documentale clinico-assistenziale",
+      "status": "verify",
+      "confidence": 34,
+      "axisIds": ["qualita", "competenze", "innovazione"],
+      "owner": "Direzione Sanitaria · Qualità · Responsabili UdO",
+      "summary": "Misurare quanto tempo sanitari, OSS ed educatori dedicano a documentazione, trascrizioni e ricerca di informazioni, distinguendo attività necessaria e duplicazioni.",
+      "problem": "Le Carte dei Servizi richiedono FaSAS, PAI, PEI, PTRI, diari, scale e rivalutazioni. Non è disponibile una misura Piatti delle ore dedicate né delle duplicazioni tra carta, email e software.",
+      "essay": {
+        "overview": "La documentazione clinica e assistenziale non è un peso da eliminare indiscriminatamente: tutela la persona, rende verificabile il progetto di cura e risponde a obblighi professionali e di accreditamento. Il problema economico nasce quando lo stesso dato viene cercato, trascritto o validato più volte, quando la registrazione avviene lontano dal punto di cura o quando moduli diversi non comunicano fra loro. In questi casi il personale qualificato sottrae tempo all'assistenza senza generare informazione aggiuntiva.",
+        "analysis": "Le Carte dei Servizi mostrano un ecosistema documentale ampio — FaSAS, PAI, PEI, PTRI, diari, scale e rivalutazioni — che coinvolge infermieri, OSS, educatori, coordinatori e altre professioni. I documenti disponibili descrivono cosa deve essere prodotto, ma non quante volte un dato venga duplicato né quante ore siano assorbite. Per questo l'analisi deve seguire pratiche reali e fascicoli campione, distinguendo tempo clinicamente necessario, adempimento obbligatorio, attesa del sistema, ricerca di informazioni e pura rilavorazione.",
+        "estimateMethod": "Non è stata attribuita una cifra perché le ore recuperate non sono automaticamente profitto. Per ogni attività la stima sarà: minuti evitabili per occorrenza × numero annuo di occorrenze × costo orario pieno del ruolo. Il risultato rappresenta capacità teoricamente liberata. Diventa beneficio economico solo nella quota convertita in minori ore esterne o straordinarie, minori sostituzioni, oppure maggiore capacità assistenziale effettivamente finanziata e servita.",
+        "missingInformation": "Servono un time study per ruolo, centro e turno, il numero di documenti prodotti, i passaggi fra carta, email e software, i tempi di firma e le correzioni. Se la duplicazione è rara, l'automazione produrrà soprattutto qualità e tracciabilità. Se invece il personale ripete ogni giorno operazioni standard ad alto volume, poche modifiche di flusso possono liberare molte ore. Anche il modo in cui la Direzione intende riutilizzare quelle ore cambia radicalmente il valore finanziario.",
+        "decisionRule": "Dare priorità alle attività frequenti, standardizzabili e a basso valore clinico, mantenendo sempre responsabilità e controllo professionale. Ogni pilota deve misurare prima e dopo minuti per pratica, completezza, errori e tempo diretto con l'utente. Nessun risparmio va iscritto finché non esiste un atto organizzativo che trasformi la capacità liberata in costo evitato o servizio aggiuntivo misurabile."
+      },
+      "proposal": "Time study di 10 giornate, mappa dei documenti per 20 fascicoli e prototipo di raccolta dati al punto di cura con precompilazione e controllo umano.",
+      "nextStep": "Selezionare 4 unità pilota e 20 fascicoli",
+      "compliance": {
+        "level": "high",
+        "summary": "Il time study può diventare controllo individuale e l'analisi dei fascicoli può esporre dati sanitari: metodologia e accessi devono essere approvati prima della rilevazione.",
+        "checks": [
+          { "area": "Privacy", "action": "Usare campioni pseudonimizzati, accessi nominativi e retention breve", "trigger": "Fascicoli e descrizioni libere possono contenere dati sanitari di persone vulnerabili." },
+          { "area": "Lavoro", "action": "Misurare il processo e non la performance della persona", "trigger": "Log nominativi o osservazione sistematica possono richiedere un vaglio ex art. 4." },
+          { "area": "Professione", "action": "Separare duplicazioni da documentazione clinicamente o normativamente necessaria", "trigger": "La responsabilità e la validazione professionale non sono automatizzabili." }
+        ],
+        "gate": "Protocollo approvato da DPO e Direzione Sanitaria, informazione/confronto RSU/RSA, dataset non nominativo e divieto di uso individuale."
+      },
+      "benefit": {
+        "priorityScore": 74,
+        "primaryType": "Capacità assistenziale e qualità",
+        "statement": "Restituire tempo al lavoro clinico-assistenziale, ridurre ritardi e duplicazioni e trasformare il tempo recuperato in maggiore capacità o minore ricorso a ore esterne.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Non monetizzabile prima del time study per ruolo, struttura e turno. Le ore recuperate non sono automaticamente profitto o riduzione di personale.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "RSD San Fermo", "type": "Residenziale", "evidence": "FaSAS, diari, PAI e assistenza ad alta integrazione sanitaria." },
+        { "name": "CDD Bobbiate", "type": "Diurno", "evidence": "Valutazione multidimensionale e aggiornamento dei progetti individuali." },
+        { "name": "CT Fogliaro", "type": "Terapeutico", "evidence": "PTRI e verifiche interistituzionali periodiche." },
+        { "name": "CTRS Nuova Brunella", "type": "Età evolutiva", "evidence": "Documentazione clinico-riabilitativa e relazione con famiglie/UONPIA." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Campionamento attività e mappa fascicolo", "status": "planned" },
+        { "name": "Disegno", "description": "Eliminazione duplicati e requisiti obbligatori", "status": "planned" },
+        { "name": "Pilota", "description": "Moduli digitali e precompilazione controllata", "status": "planned" },
+        { "name": "Scala", "description": "Standard unico e misurazione trimestrale", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Minuti amministrativi per turno", "baseline": "Da misurare", "target": "-20%", "source": "Time study" },
+        { "name": "Campi trascritti più volte", "baseline": "Da censire", "target": "-50%", "source": "Mappa documentale" },
+        { "name": "Tempo evento → registrazione", "baseline": "Da misurare", "target": "-30%", "source": "Log sistemi" },
+        { "name": "Tempo assistenziale recuperato", "baseline": "0 h validate", "target": "≥1,5 h/settimana/FTE pilota", "source": "Prima/dopo" }
+      ],
+      "dataNeeds": [
+        "Elenco completo dei moduli e proprietario del dato",
+        "Tempi reali per compilazione, firma, verifica e archiviazione",
+        "Log applicativi e punti di doppio inserimento",
+        "Attività amministrative svolte da OSS, educatori e infermieri",
+        "Requisiti ATS che impediscono l'eliminazione di un passaggio"
+      ],
+      "risks": [
+        { "name": "Falsa efficienza", "detail": "Digitalizzare lo stesso doppio lavoro non libera tempo." },
+        { "name": "Qualità clinica", "detail": "L'AI può preparare bozze, non sostituire valutazione e responsabilità professionale." }
+      ],
+      "notes": "Da evitare stime FTE prima del time study per ruolo e struttura."
+    },
+    {
+      "id": "INT-03",
+      "title": "Workflow amministrativi senza carta e senza doppio inserimento",
+      "status": "verify",
+      "confidence": 29,
+      "axisIds": ["sostenibilita", "innovazione", "competenze"],
+      "owner": "Direzione Amministrativa · Sistemi Informativi · UdO",
+      "summary": "Censire e ridisegnare i flussi ripetitivi di sede e dei centri: richieste, approvazioni, fatture, presenze, acquisti, inserimenti e comunicazioni.",
+      "problem": "Il bilancio segnala una revisione dei processi interni, ma non quantifica moduli cartacei, allegati email, approvazioni manuali o re-inserimenti nei gestionali.",
+      "essay": {
+        "overview": "Nei flussi amministrativi il costo nascosto non coincide con la carta in sé, ma con la frammentazione: richieste ricevute in formati diversi, allegati scambiati per email, approvazioni non tracciate, dati reinseriti nei gestionali e controlli svolti solo perché la fonte iniziale non è affidabile. Digitalizzare un modulo senza ridisegnare il percorso può semplicemente trasformare un foglio in un PDF, lasciando invariati tempi, errori e responsabilità.",
+        "analysis": "Il bilancio indica una revisione dei processi interni, ma i documenti analizzati non contengono un inventario dei flussi né volumi e tempi. L'intervento parte quindi dai processi concreti di sede e unità operative — acquisti, fatture, presenze, richieste, autorizzazioni e comunicazioni — e ricostruisce per ciascuno origine del dato, passaggi, decisioni, sistemi coinvolti e archivio finale. La priorità non dipende dalla visibilità del modulo, bensì dal prodotto fra frequenza, tempo, errore e impatto dell'attesa.",
+        "estimateMethod": "La stima per flusso sarà: pratiche annue × minuti realmente eliminati × costo orario pieno, più costi di rilavorazione, stampa, spedizione o archiviazione effettivamente evitati, meno licenze, manutenzione e tempo di governo del nuovo processo. Le ore costituiscono valore di capacità; diventano cassa soltanto quando riducono straordinari, consulenze, sostituzioni o fabbisogno incrementale. Per evitare sovrastime non saranno sommati benefici già attribuiti alla riduzione del carico clinico-assistenziale.",
+        "missingInformation": "Occorrono elenco dei moduli, volumi annui, ruoli coinvolti, tempi di attraversamento, tassi di errore, numero di reinserimenti e sistemi di destinazione. Un flusso da poche decine di casi l'anno, anche se scomodo, avrà un beneficio contenuto; uno da migliaia di casi con tre trascrizioni può giustificare l'integrazione. Le restrizioni dei software esistenti e la disponibilità di API determinano inoltre se basti un modulo con workflow o serva un progetto più costoso.",
+        "decisionRule": "Selezionare inizialmente due o tre flussi ad alto volume e bassa variabilità, definire un unico dato autorevole e misurare tempo totale, errori e pratiche sospese prima e dopo. Scalare solo se il processo digitale riduce davvero passaggi e non crea un secondo archivio parallelo. Il beneficio consuntivo deve essere firmato dal responsabile del processo e riconciliato con ore o costi realmente riutilizzati."
+      },
+      "proposal": "Inventario dei flussi, priorità per volume × errore × tempo, moduli digitali unici, workflow di approvazione e OCR solo dove elimina attività manuale verificabile.",
+      "nextStep": "Workshop di 90 minuti con sede e 3 UdO",
+      "compliance": {
+        "level": "high",
+        "summary": "La digitalizzazione è procedibile, ma workflow, firme, log e assegnazione delle pratiche possono modificare mansioni o rendere controllabile l'attività individuale.",
+        "checks": [
+          { "area": "Privacy", "action": "Definire titolare del dato, accessi, conservazione e responsabili esterni", "trigger": "Il modulo unico può aggregare dati prima dispersi e aumentare l'impatto di un accesso improprio." },
+          { "area": "Statuto lavoratori", "action": "Valutare log, cruscotti individuali e tempi pratica prima del pilota", "trigger": "Se consentono controllo a distanza può applicarsi l'art. 4." },
+          { "area": "CCNL", "action": "Confrontare l'impatto su organizzazione e mansioni", "trigger": "Automazione e riallocazione del lavoro rientrano nel confronto aziendale previsto dal CCNL ANFFAS." }
+        ],
+        "gate": "Nessun workflow con tracciamento nominativo prima di informativa, matrice accessi, vaglio ex art. 4 e confronto sugli impatti organizzativi."
+      },
+      "benefit": {
+        "priorityScore": 70,
+        "primaryType": "Tempo amministrativo e controllo",
+        "statement": "Ridurre doppio inserimento, solleciti, errori e tempi di attraversamento; liberare ore amministrative per controllo e supporto ai servizi.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Serve il volume annuo dei flussi e il tempo per pratica. Il valore sarà ore eliminate × costo pieno, contando come cassa solo costi realmente evitati.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "Sede · Amministrazione", "type": "Funzione centrale", "evidence": "Contabilità, controllo di gestione, rette e rendicontazioni." },
+        { "name": "Sede · HR e Acquisti", "type": "Funzione centrale", "evidence": "Onboarding, presenze, fornitori, ordini e contratti." },
+        { "name": "Polo Abbiategrasso", "type": "Polo territoriale", "evidence": "Servizi acquisiti nel 2025 e processi ancora da armonizzare." },
+        { "name": "RSD San Fermo", "type": "Residenziale", "evidence": "Struttura ampia, turni continui e alto volume di movimenti." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Catalogo processi, moduli e sistemi", "status": "planned" },
+        { "name": "Disegno", "description": "Priorità e flussi futuri con responsabilità", "status": "planned" },
+        { "name": "Pilota", "description": "Due flussi ad alto volume, senza integrazioni complesse", "status": "planned" },
+        { "name": "Scala", "description": "Libreria moduli, API e audit trail", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Moduli cartacei attivi", "baseline": "Da censire", "target": "-60% sui flussi pilota", "source": "Inventario moduli" },
+        { "name": "Tempo ciclo approvazione", "baseline": "Da misurare", "target": "-40%", "source": "Timestamp workflow" },
+        { "name": "Dati reinseriti", "baseline": "Da censire", "target": "-70%", "source": "Mappa campi" },
+        { "name": "Pratiche con errore/incomplete", "baseline": "Da acquisire", "target": "-30%", "source": "Registro anomalie" }
+      ],
+      "dataNeeds": [
+        "Elenco moduli cartacei ed Excel usati da ciascuna area",
+        "Volumi mensili e tempi medi di ogni pratica",
+        "Sistemi sorgente e destinazione di ciascun dato",
+        "Firme obbligatorie, segregazione dei ruoli e conservazione",
+        "Costi correnti di stampa, archiviazione e gestione documentale"
+      ],
+      "risks": [
+        { "name": "Scope", "detail": "Partire da tutti i processi insieme impedisce di misurare il beneficio." },
+        { "name": "Adozione", "detail": "Il flusso deve funzionare anche su mobile e durante il turno." }
+      ],
+      "notes": "Priorità da assegnare dopo un censimento breve basato sui volumi."
+    },
+    {
+      "id": "INT-04",
+      "title": "Cartella elettronica e assistente AI locale",
+      "status": "partial",
+      "confidence": 58,
+      "axisIds": ["innovazione", "qualita", "reputazione"],
+      "owner": "Sistemi Informativi · Direzione Sanitaria · Innovazione",
+      "summary": "Integrare la cartella elettronica con funzioni AI locali e controllate: ricerca documentale, bozze, sintesi, controlli di completezza e supporto alla progettazione.",
+      "problem": "La cartella elettronica e un sistema AI alla RSD Sesto sono già dichiarati come obiettivi strategici. Mancano architettura, casi d'uso prioritari, baseline e regole di governo del dato.",
+      "essay": {
+        "overview": "Cartella elettronica e AI locale rispondono al piano strategico solo se migliorano un processo assistenziale identificato. Il server è un'infrastruttura, non un beneficio: installarlo senza integrazioni, fonti affidabili e responsabilità d'uso produrrebbe un costo aggiuntivo. La sequenza corretta è rendere disponibili dati strutturati e documenti governati, poi applicare funzioni circoscritte come ricerca, bozze, sintesi e controllo di completezza.",
+        "analysis": "L'obiettivo strategico è già esplicito per la RSD di Sesto, ma nei materiali esaminati non compaiono architettura, basi dati, vincoli dei fornitori né una baseline dei tempi. È quindi opportuno separare il programma in due livelli: la cartella elettronica come fonte operativa e l'assistente locale come livello di supporto. L'AI non deve prendere decisioni cliniche autonome; deve citare la fonte, rispettare gli accessi per ruolo, registrare le operazioni e lasciare l'approvazione al professionista.",
+        "estimateMethod": "La quantificazione sarà costruita caso per caso: volume annuo di documenti o richieste × minuti risparmiati × percentuale di output effettivamente accettati × costo orario pieno. Dal valore si sottraggono costo del server, integrazioni, sicurezza, manutenzione, formazione, valutazione e governo del modello. Qualità, rapidità di reperimento e riduzione del rischio vanno misurate separatamente; non devono essere trasformate automaticamente in euro.",
+        "missingInformation": "Servono inventario dei sistemi, formati e contratti, localizzazione dei dati, profili di accesso, tempi per attività, volumi, tasso di correzione delle bozze e requisiti privacy. Se l'accesso ai dati è chiuso o la qualità documentale è bassa, integrazione e bonifica possono superare il valore atteso. Se invece esistono molte attività ripetitive su fonti ben strutturate, un server economico e casi d'uso mirati possono produrre valore senza una piattaforma sovradimensionata.",
+        "decisionRule": "Approvare un caso d'uso alla volta con dataset autorizzato, responsabile, soglia di qualità e meccanismo di ritorno al processo manuale. Il pilota è superato solo se riduce il tempo totale includendo la revisione umana, mantiene completezza e riservatezza e mostra un costo annuo inferiore al valore della capacità realmente riutilizzata. L'acquisto hardware segue il dimensionamento dei casi d'uso, non lo precede."
+      },
+      "proposal": "Avviare su un server locale economicamente sostenibile un assistente documentale con accessi per ruolo, fonti citate, log e approvazione umana. Escludere decisioni cliniche autonome.",
+      "nextStep": "Inventario sistemi, dati e casi d'uso autorizzabili",
+      "compliance": {
+        "level": "critical",
+        "summary": "È il cantiere a maggiore esposizione: combina dati sanitari, tecnologia innovativa, log degli utenti e possibile influenza su decisioni cliniche o lavorative.",
+        "checks": [
+          { "area": "DPIA e sicurezza", "action": "Eseguire screening DPIA, threat model, matrice accessi e procedura incidenti", "trigger": "Dati sanitari di soggetti vulnerabili e tecnologia innovativa possono determinare rischio elevato." },
+          { "area": "Controllo lavoratori", "action": "Separare audit di sicurezza da metriche di produttività", "trigger": "Log dettagliati possono consentire monitoraggio del personale e attivare l'art. 4." },
+          { "area": "Controllo umano", "action": "Vietare decisioni cliniche o lavorative autonome e rendere visibili fonti e limiti", "trigger": "La responsabilità professionale e datoriale non può essere delegata al modello." }
+        ],
+        "gate": "Nessun dato reale finché DPO, Direzione Sanitaria, IT e consulente del lavoro non approvano perimetro, DPIA o motivazione di non necessità, controllo umano e posizione sindacale."
+      },
+      "benefit": {
+        "priorityScore": 58,
+        "primaryType": "Tempo, qualità documentale e rischio",
+        "statement": "Ridurre ricerca e preparazione di documenti, aumentare completezza e tracciabilità e contenere l'esposizione di dati sensibili fuori dall'organizzazione.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Il server non genera beneficio da solo. La monetizzazione dipende dai casi d'uso integrati, dai minuti risparmiati e dalla percentuale di bozze accettate.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "RSD Sesto Calende", "type": "Residenziale", "evidence": "Centro esplicitamente individuato dal piano per un sistema basato su IA." },
+        { "name": "Sede · Sistemi Informativi", "type": "Funzione centrale", "evidence": "Infrastruttura, identità, logging, backup e sicurezza." },
+        { "name": "Tutte le UdO", "type": "Trasversale", "evidence": "Implementazione della cartella elettronica indicata tra gli obiettivi 2026." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Sistemi, dati, accessi e requisiti privacy", "status": "active" },
+        { "name": "Disegno", "description": "Architettura locale e tre casi d'uso", "status": "planned" },
+        { "name": "Pilota", "description": "RAG documentale e bozze con approvazione", "status": "planned" },
+        { "name": "Scala", "description": "Integrazione cartella e riuso multi-centro", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Tempo ricerca informazioni", "baseline": "Da misurare", "target": "-50%", "source": "Test utenti" },
+        { "name": "Bozze approvate senza correzioni sostanziali", "baseline": "0%", "target": ">70%", "source": "Log revisione" },
+        { "name": "Documenti con fonte tracciata", "baseline": "Da acquisire", "target": "100% output AI", "source": "Audit applicativo" },
+        { "name": "Incidenti privacy o accesso", "baseline": "0", "target": "0", "source": "Registro sicurezza" }
+      ],
+      "dataNeeds": [
+        "Elenco gestionali e possibilità di integrazione/API",
+        "Classificazione dei dati e matrice accessi per ruolo",
+        "Volumi documentali e tempi di conservazione",
+        "Requisiti hardware, continuità operativa e backup",
+        "Valutazione DPIA e casi d'uso esclusi"
+      ],
+      "risks": [
+        { "name": "Dati", "detail": "Un modello locale non risolve dati incompleti, incoerenti o non indicizzati." },
+        { "name": "Governance", "detail": "Ogni output deve indicare fonti e responsabile della validazione." }
+      ],
+      "notes": "Allineamento strategico forte; il valore economico dipende dai processi integrati, non dal server in sé."
+    },
+    {
+      "id": "INT-05",
+      "title": "Capacità, liste d'attesa e presa in carico territoriale",
+      "status": "analyzed",
+      "confidence": 76,
+      "axisIds": ["sostenibilita", "qualita", "reputazione"],
+      "owner": "Presa in Carico · Direzioni Servizi · Controllo di Gestione",
+      "summary": "Costruire una vista unica che colleghi richieste, lista d'attesa, compatibilità clinica, capacità autorizzata, saturazione e motivi di mancato ingresso.",
+      "problem": "Nel 2025 risultano 870 richieste formali; per i servizi adulti il bilancio indica 351 persone in lista d'attesa. La sola lista non distingue domanda servibile, urgenza e capacità realmente attivabile.",
+      "essay": {
+        "overview": "La lista d'attesa è il punto di contatto fra bisogno territoriale e capacità della Fondazione, ma il suo numero grezzo non misura né il mercato servibile né i ricavi potenziali. Una persona può essere in attesa di un servizio non compatibile, non ancora autorizzato o non finanziato; può inoltre comparire in più percorsi o non essere più disponibile. L'obiettivo è trasformare un elenco statico in un sistema decisionale che spieghi perché ogni richiesta non è ancora diventata presa in carico.",
+        "analysis": "Il bilancio riporta 870 richieste formali nel 2025 e 351 persone nella lista dei servizi adulti. Questi dati dimostrano pressione della domanda, ma non consentono di attribuire alla Fondazione una capacità non supportata di pari dimensione. Occorre collegare richiesta, territorio, urgenza, compatibilità, autorizzazione, preferenze della famiglia, posto disponibile, personale necessario e motivo di attesa. Solo così si distingue la carenza di capacità dal ritardo amministrativo o dalla mancata corrispondenza fra bisogno e offerta.",
+        "estimateMethod": "Il beneficio economico di nuovi ingressi si calcola per servizio: persone compatibili e finanziabili effettivamente ammesse × tariffa netta o provento atteso, meno personale incrementale, trasporto, pasti, materiali e altri costi marginali. Va considerato anche il tempo di permanenza atteso e il vincolo della capacità autorizzata. Il miglioramento del tempo di risposta è un KPI di qualità; diventa valore monetario solo se evita costi o produce ingressi aggiuntivi documentati.",
+        "missingInformation": "Mancano anzianità e stato delle richieste, duplicati, esito delle valutazioni, autorizzazione economica, compatibilità per unità, rinunce e motivi di blocco. Se gran parte della lista non è finanziabile o richiede un servizio diverso, il potenziale economico diminuisce. Se invece numerose persone compatibili attendono per passaggi lenti mentre esistono posti e turni disponibili, un registro unico e un workflow possono aumentare rapidamente la saturazione senza espansione strutturale.",
+        "decisionRule": "Non usare il totale della lista come obiettivo commerciale. Definire stati univoci, un owner e una data di prossima azione per ogni richiesta; analizzare mensilmente cause e tempi per unità. Un ingresso aggiuntivo è attribuibile all'intervento solo quando è dimostrato che la rimozione di uno specifico collo di bottiglia ne ha anticipato o reso possibile l'attivazione, con margine positivo verificato dal controllo di gestione."
+      },
+      "proposal": "Registro unico della domanda con stato, bisogno, territorio, idoneità e motivo di attesa; collegamento ai posti e alla capacità di personale di ciascuna UdO.",
+      "nextStep": "Definire il dato minimo comune della richiesta",
+      "compliance": {
+        "level": "high",
+        "summary": "Il registro concentra dati sanitari e sociali di persone vulnerabili; deve migliorare la presa in carico senza creare graduatorie opache o usi secondari non dichiarati.",
+        "checks": [
+          { "area": "Minimizzazione", "action": "Definire il dato minimo per stato, compatibilità e motivo di attesa", "trigger": "Non tutte le informazioni cliniche servono alla vista direzionale." },
+          { "area": "Trasparenza", "action": "Separare regole di priorità, valutazione professionale e reporting", "trigger": "L'eventuale ranking deve essere spiegabile e non sostituire la valutazione multidisciplinare." },
+          { "area": "Accessi", "action": "Applicare ruoli e aggregazione per il reporting", "trigger": "La Direzione necessita indicatori, non fascicoli nominativi." }
+        ],
+        "gate": "Dizionario minimo, base giuridica, autorizzazioni, retention e regole trasparenti di presa in carico approvate prima del registro unico."
+      },
+      "benefit": {
+        "priorityScore": 80,
+        "primaryType": "Capacità, ricavi e risposta territoriale",
+        "statement": "Ridurre il tempo di valutazione, usare meglio i posti realmente attivabili e distinguere domanda finanziabile, compatibile e urgente.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Le 351 persone in lista non equivalgono a ricavi. Servono compatibilità, tariffa, posti attivabili e costo marginale per ogni nuovo ingresso.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "Sede · Presa in Carico", "type": "Funzione centrale", "evidence": "Funzione introdotta per uniformare accoglienza, valutazione e accompagnamento." },
+        { "name": "RSD Sesto Calende", "type": "Residenziale", "evidence": "Polo indicato per ampliamento e moduli di sollievo/pronto intervento." },
+        { "name": "Centro Mafalda Luce", "type": "Età evolutiva", "evidence": "Sviluppo della filiera 0-16 anni previsto dal piano." },
+        { "name": "Tutte le UdO", "type": "Trasversale", "evidence": "Richieste, compatibilità e disponibilità devono essere confrontabili." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Domanda, posti, ospiti e lista 2025", "status": "done" },
+        { "name": "Disegno", "description": "Stati, priorità e cause di attesa", "status": "active" },
+        { "name": "Pilota", "description": "Registro unico adulti + età evolutiva", "status": "planned" },
+        { "name": "Scala", "description": "Previsione capacità e reporting territorio", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Richieste con esito e motivazione", "baseline": "Da verificare", "target": "100%", "source": "Registro presa in carico" },
+        { "name": "Tempo richiesta → valutazione", "baseline": "Da acquisire", "target": "-25%", "source": "Timestamp workflow" },
+        { "name": "Lista d'attesa adulti", "baseline": "351 persone", "target": "Per servizio e priorità", "source": "Bilancio 2025" },
+        { "name": "Capacità attivabile", "baseline": "Non calcolata", "target": "Aggiornata mensilmente", "source": "Posti + organico" }
+      ],
+      "dataNeeds": [
+        "Elenco anonimizzato delle richieste e stato corrente",
+        "Criteri di priorità e compatibilità per ogni UdO",
+        "Motivi di rinuncia, non idoneità o mancato ingresso",
+        "Capacità autorizzata, contrattualizzata e realmente attivabile",
+        "Organico minimo aggiuntivo necessario per ogni nuovo posto"
+      ],
+      "risks": [
+        { "name": "Doppio conteggio", "detail": "La stessa persona può essere presente su più liste o servizi." },
+        { "name": "Interpretazione", "detail": "La lista d'attesa non equivale automaticamente a domanda finanziabile." }
+      ],
+      "notes": "Buona evidenza pubblica sulla domanda; serve la micro-informazione interna per stimare la capacità non supportata."
+    },
+    {
+      "id": "INT-06",
+      "title": "Recupero della saturazione nei centri diurni",
+      "status": "partial",
+      "confidence": 67,
+      "axisIds": ["sostenibilita", "qualita", "reputazione"],
+      "owner": "Direzione Servizi Adulti · Presa in Carico · Responsabili CDD",
+      "summary": "Comprendere perché alcuni CDD non raggiungono la saturazione nonostante la domanda territoriale e ridurre il tempo tra posto disponibile e nuovo ingresso.",
+      "problem": "Nel 2025 il comparto diurno è indicato come la situazione più critica. CDD Melegnano registra il 74,54% di saturazione e CDD Bregazzana l'84,29%, mentre esistono richieste e liste d'attesa.",
+      "essay": {
+        "overview": "Nei centri diurni la saturazione bassa combina due effetti: riduce i proventi rispetto alla capacità disponibile e può indicare che il bisogno territoriale non riesce a trasformarsi in accesso. Tuttavia riempire posti non è sempre una decisione a costo marginale nullo: trasporto, intensità assistenziale, composizione dei gruppi e soglie di organico possono far scattare costi aggiuntivi. L'ottimizzazione deve perciò agire sul percorso di ingresso e verificare il margine di ogni incremento.",
+        "analysis": "I dati 2025 indicano una saturazione del 74,54% per CDD Melegnano e dell'84,29% per CDD Bregazzana, con proventi rispettivamente pari a 473.509,65 e 675.043,26 euro. Poiché nello stesso quadro esistono richieste e liste d'attesa, è ragionevole indagare il disallineamento. La retrospettiva sugli ultimi posti liberati deve separare tempi di valutazione, autorizzazione, scelta della famiglia, compatibilità, trasporto e adeguamento organizzativo.",
+        "estimateMethod": "Lo scenario porta Melegnano all'85% e Bregazzana al 90%. Applicando ai proventi 2025 la proporzione fra saturazione obiettivo e attuale si ottengono circa 66,4 mila euro e 45,7 mila euro di proventi lordi aggiuntivi, circa 112 mila complessivi. L'intervallo di beneficio di 55-90 mila euro assume prudenzialmente che resti come contribuzione circa il 50-80% dopo i costi marginali. Non è quindi una previsione, ma una sensibilità costruita su obiettivi espliciti e dati pubblicati.",
+        "missingInformation": "Servono posti autorizzati e contrattualizzati, presenze/giornate, tariffe e mix, calendario di apertura, trasporto, intensità degli utenti, soglie di personale e cause dei posti vuoti. Se raggiungere l'obiettivo richiede un nuovo turno o personale aggiuntivo rilevante, la contribuzione può scendere sotto la forchetta. Se l'organico e il trasporto hanno capacità inutilizzata, il margine può avvicinarsi alla parte alta. Anche assenze strutturali e frequenza parziale possono rendere improprio usare una proporzione lineare.",
+        "decisionRule": "Validare prima il denominatore della saturazione e costruire un conto marginale per ciascun centro. Avviare il pilota sul collo di bottiglia più frequente e misurare giorni fra posto disponibile, valutazione, autorizzazione e ingresso. Il beneficio si registra sui proventi effettivi aggiuntivi meno costi incrementali, confrontati con una baseline omogenea e senza attribuire automaticamente all'intervento variazioni tariffarie o stagionali."
+      },
+      "proposal": "Analizzare dimissioni, compatibilità delle richieste, trasporto, tempi autorizzativi e percorso di ingresso. Automatizzare gli handoff solo dopo aver identificato il collo di bottiglia.",
+      "nextStep": "Retrospettiva su ultimi 20 posti liberati",
+      "compliance": {
+        "level": "medium",
+        "summary": "L'analisi retrospettiva è compatibile con dati pseudonimizzati; l'attuazione può però incidere su carichi, turni, sicurezza e criteri di accesso al servizio.",
+        "checks": [
+          { "area": "Dati utenti", "action": "Usare codici e motivi standardizzati nella retrospettiva", "trigger": "Non servono nominativi per misurare giorni di vuoto e colli di bottiglia." },
+          { "area": "Organizzazione", "action": "Valutare l'impatto dell'aumento di saturazione sull'organico", "trigger": "Nuovi ingressi possono superare soglie di personale o cambiare intensità assistenziale." },
+          { "area": "Confronto", "action": "Coinvolgere HR e rappresentanze se cambiano turni, carichi o quantità del servizio", "trigger": "Il beneficio economico non prevale su standard e sicurezza." }
+        ],
+        "gate": "Procedere all'aumento di capacità solo con verifica di compatibilità, standard, organico incrementale e impatto organizzativo."
+      },
+      "benefit": {
+        "priorityScore": 90,
+        "primaryType": "Margine di contribuzione e accesso",
+        "statement": "Aumentare le giornate finanziate utilizzando capacità già esistente e ridurre i giorni di posto libero tra dimissione e nuovo ingresso.",
+        "annualLow": 55000,
+        "annualHigh": 90000,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Scenario: portare Melegnano dal 74,54% all'85% e Bregazzana dall'84,29% al 90% implica circa €112 mila di proventi lordi aggiuntivi sui dati 2025; l'intervallo sottrae prudenzialmente i costi marginali. Da validare per tariffa, mix e organico.",
+        "monetizationStatus": "scenario"
+      },
+      "contexts": [
+        { "name": "CDD Melegnano", "type": "Diurno", "evidence": "Saturazione reale 2025 pari al 74,54%." },
+        { "name": "CDD Bregazzana", "type": "Diurno", "evidence": "Saturazione reale 2025 pari all'84,29%." },
+        { "name": "CDD Bobbiate", "type": "Diurno", "evidence": "Benchmark interno: saturazione reale 97,82%." },
+        { "name": "Sede · Presa in Carico", "type": "Funzione centrale", "evidence": "Matching tra domanda e posto disponibile." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Saturazione e cause dichiarate", "status": "done" },
+        { "name": "Disegno", "description": "Funnel posto libero → ingresso", "status": "active" },
+        { "name": "Pilota", "description": "Matching e checklist ingresso su 2 CDD", "status": "planned" },
+        { "name": "Scala", "description": "Regole comuni e previsione dimissioni", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Saturazione CDD Melegnano", "baseline": "74,54%", "target": ">85%", "source": "Bilancio 2025" },
+        { "name": "Saturazione CDD Bregazzana", "baseline": "84,29%", "target": ">90%", "source": "Bilancio 2025" },
+        { "name": "Giorni posto libero", "baseline": "Da acquisire", "target": "-30%", "source": "Registro presenze" },
+        { "name": "Richieste compatibili contattate", "baseline": "Da acquisire", "target": "100% entro 5 gg", "source": "Workflow presa in carico" }
+      ],
+      "dataNeeds": [
+        "Date di dimissione e ingresso per posto negli ultimi 24 mesi",
+        "Motivo delle dimissioni e tempi non programmati",
+        "Esiti delle richieste valutate e ragioni di incompatibilità",
+        "Disponibilità e vincoli del servizio trasporto",
+        "Tempi di Comuni, ATS, famiglie e documentazione d'ingresso"
+      ],
+      "risks": [
+        { "name": "Domanda non compatibile", "detail": "Il numero in lista può non corrispondere al profilo assistenziale del posto." },
+        { "name": "Trasporto", "detail": "Un posto disponibile non è utilizzabile se il tragitto non è sostenibile." }
+      ],
+      "notes": "Intervento ad alto potenziale perché lega capacità già esistente a ricavi e risposta territoriale."
+    },
+    {
+      "id": "INT-07",
+      "title": "Costo per servizio, posto e giornata assistita",
+      "status": "partial",
+      "confidence": 63,
+      "axisIds": ["sostenibilita", "innovazione"],
+      "owner": "Controllo di Gestione · Direzione Amministrativa · Sistemi Informativi",
+      "summary": "Passare dal costo contabilizzato per centro a un modello di costo-to-serve che separi capacità fissa, costo variabile e margine delle attività aggiuntive.",
+      "problem": "Il report 2025 espone costi e proventi per 15 centri adulti, ma non li collega a giornate effettive, intensità, FTE, ore esterne o complessità dell'utenza.",
+      "essay": {
+        "overview": "Un centro può apparire costoso perché serve più giornate, persone più complesse o perché sostiene capacità necessaria ma temporaneamente inutilizzata. Il conto economico per centro è indispensabile, ma da solo non consente di distinguere inefficienza, intensità assistenziale e scelta strategica. Il modello cost-to-serve deve costruire il ponte fra contabilità, attività e capacità, evitando confronti semplicistici fra servizi diversi.",
+        "analysis": "I documenti 2025 rendono disponibili costi e proventi per numerosi centri adulti, ma non li collegano sistematicamente a presenze, giornate, FTE, ore esterne e livello di bisogno. L'analisi proposta classifica i costi in capacità fissa, costi variabili e risorse che cambiano a soglia; definisce inoltre regole trasparenti per ribaltare i costi comuni. Il risultato deve spiegare il costo per posto disponibile, per giornata erogata e per unità di attività rilevante, non produrre una graduatoria isolata.",
+        "estimateMethod": "Non è assegnato un beneficio autonomo perché il modello è un abilitatore. Il suo valore economico deriva esclusivamente da decisioni successive documentate: ad esempio una diversa allocazione di turni, un acquisto evitato, una soglia di ingresso resa visibile o l'interruzione di un'attività a margine negativo. Ogni decisione deve avere baseline, controfattuale e risultato; sommare genericamente una percentuale dei costi gestiti sovrastimerebbe il beneficio.",
+        "missingInformation": "Occorrono presenze e giornate per centro, capacità autorizzata e aperta, FTE e costo per ruolo, ore esterne, trasporti, costi diretti, proventi per tipologia e criteri di allocazione dei servizi centrali. Se questi dati non quadrano mensilmente con la contabilità, il costo unitario sarà solo apparente. La complessità dell'utenza decide inoltre se le differenze fra centri rappresentino inefficienza o un maggiore fabbisogno assistenziale.",
+        "decisionRule": "Usare il modello per domande concrete e non per automatizzare tagli lineari. Una metrica entra nel cruscotto solo se ha definizione, fonte, responsabile e riconciliazione contabile. Il beneficio attribuito al modello è la somma delle sole azioni approvate e realizzate grazie all'informazione prodotta, misurate al netto di effetti esterni e senza duplicare quanto già conteggiato negli altri interventi."
+      },
+      "proposal": "Data mart mensile con posti, presenze, giornate, FTE, ore acquistate, proventi e costi. Evidenziare costo marginale e soglie di capacità prima di valutare nuovi ingressi.",
+      "nextStep": "Definire dizionario dati e quadratura mensile",
+      "compliance": {
+        "level": "medium",
+        "summary": "Il modello di costo è utile se rimane una misura di servizio; diventa critico quando consente inferenze o valutazioni sui singoli lavoratori o utenti.",
+        "checks": [
+          { "area": "Aggregazione", "action": "Usare centro, servizio e periodo come granularità ordinaria", "trigger": "FTE e assenze individuali non sono necessari al cruscotto direzionale." },
+          { "area": "Finalità", "action": "Separare controllo di gestione da performance individuale", "trigger": "Un indicatore economico isolato non misura qualità né adempimento del lavoratore." },
+          { "area": "Accessi", "action": "Limitare il dettaglio HR ai soggetti autorizzati", "trigger": "Costi, assenze e retribuzioni sono dati personali del rapporto di lavoro." }
+        ],
+        "gate": "Dizionario, granularità, ruoli di accesso e divieto di graduatorie individuali approvati prima dell'alimentazione ricorrente."
+      },
+      "benefit": {
+        "priorityScore": 62,
+        "primaryType": "Qualità decisionale e margine protetto",
+        "statement": "Evitare decisioni su medie fuorvianti, rendere visibile il margine di contribuzione e concentrare gli interventi sulle vere cause di scostamento.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "È un abilitatore: il suo valore economico va attribuito solo alle decisioni documentate che riducono costi o aumentano margine.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "Sede · Controllo di Gestione", "type": "Funzione centrale", "evidence": "Contabilità analitica e budget per centro." },
+        { "name": "15 centri adulti", "type": "Perimetro economico", "evidence": "Perimetro del report Costi Contabilizzati 2025." },
+        { "name": "RSD San Fermo", "type": "Residenziale", "evidence": "Centro economicamente rilevante e ad alta intensità." },
+        { "name": "CDD Melegnano", "type": "Diurno", "evidence": "Caso utile per collegare costo fisso e saturazione." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Costi e proventi 2025 per centro", "status": "done" },
+        { "name": "Disegno", "description": "Driver, regole di allocazione e dizionario", "status": "active" },
+        { "name": "Pilota", "description": "Due RSD e due CDD con chiusura mensile", "status": "planned" },
+        { "name": "Scala", "description": "Budget rolling e scenari di capacità", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Costo per giornata assistita", "baseline": "Non calcolato", "target": "Mensile per UdO", "source": "Contabilità + presenze" },
+        { "name": "Margine di contribuzione per servizio", "baseline": "Non calcolato", "target": "Disponibile per decisione", "source": "Modello cost-to-serve" },
+        { "name": "Ore esterne per ospite", "baseline": "Da acquisire", "target": "Trend mensile", "source": "Fatture + turni" },
+        { "name": "Scostamento forecast", "baseline": "Da verificare", "target": "<5%", "source": "Budget rolling" }
+      ],
+      "dataNeeds": [
+        "Giornate/presenze effettive per centro e regime",
+        "FTE e costo del personale attribuiti alla sede operativa",
+        "Ore e tariffe dei servizi esterni",
+        "Criteri di ribaltamento dei costi generali",
+        "Proventi legati a classe, posto, progetto o prestazione"
+      ],
+      "risks": [
+        { "name": "Allocazioni", "detail": "Ribaltamenti arbitrari producono un margine formalmente preciso ma non decisionale." },
+        { "name": "Uso improprio", "detail": "Il costo non deve diventare una misura isolata della qualità del centro." }
+      ],
+      "notes": "Il modello deve distinguere beneficio di cassa, capacità recuperata e qualità."
+    },
+    {
+      "id": "INT-08",
+      "title": "Mappa FTE, mansioni reali e attività amministrative",
+      "status": "verify",
+      "confidence": 26,
+      "axisIds": ["competenze", "qualita", "sostenibilita"],
+      "owner": "Risorse Umane · Direzioni Servizi · Responsabili UdO",
+      "summary": "Ricostruire il lavoro effettivo per ruolo e centro, evitando di assumere che tutti gli OSS, ASA ed educatori classificati come frontali svolgano le stesse attività.",
+      "problem": "Il bilancio indica 358 addetti nelle categorie di presa in carico frontale, ma non riporta FTE, ore per centro o quota di lavoro amministrativo, coordinamento e logistica.",
+      "essay": {
+        "overview": "La qualifica contrattuale non descrive automaticamente il lavoro svolto. Un OSS può dedicare parte significativa del turno a registrazioni, telefonate, approvvigionamenti o coordinamento; allo stesso tempo alcune attività amministrative operative possono essere necessarie alla sicurezza del servizio. Prima di proporre automazione o variazioni di organico bisogna ricostruire il lavoro reale, con un metodo che osservi i processi e non valuti individualmente le persone.",
+        "analysis": "Il bilancio indica 358 addetti nelle categorie definite di presa in carico frontale, ma non pubblica equivalenti a tempo pieno, distribuzione per centro, ore effettive o compiti. Il dato dimostra la rilevanza del perimetro, non quante risorse siano disponibili per assistenza diretta. L'analisi combina anagrafica FTE anonimizzata, turni, campionamento delle attività e interviste brevi, separando assistenza, documentazione, amministrazione operativa, logistica, coordinamento, attese e transizioni.",
+        "estimateMethod": "Non è monetizzato alcun miglioramento prima della misura. La capacità potenziale si calcola come ore annue per attività eliminabile o trasferibile × costo orario pieno del ruolo. Per ottenere un beneficio finanziario serve poi una conversione esplicita: minori ore esterne o straordinarie, mancata nuova assunzione a fronte di crescita, oppure più prestazioni finanziate. Presentare l'intero valore delle ore come profitto netto confonderebbe produttività e cassa.",
+        "missingInformation": "FTE, part-time, assenze, turni, distribuzione per unità, mansioni effettive, ore amministrative, ricorso a esterni e vincoli di accreditamento determinano il risultato. Se le attività non assistenziali sono sporadiche o obbligatoriamente in capo al professionista, il potenziale è basso. Se emergono ruoli qualificati stabilmente assorbiti da compiti standardizzabili, l'intervento può liberare capacità importante; occorre però sapere se il servizio ha domanda e autorizzazioni per utilizzarla.",
+        "decisionRule": "Campionare più strutture e turni, condividere categorie e finalità con il personale e aggregare i risultati senza ranking individuali. Intervenire prima sui processi che generano lavoro improprio, non sulle persone che lo eseguono. Registrare un beneficio solo quando l'orario liberato produce una variazione osservabile di copertura, esternalizzazione, straordinario o capacità assistenziale, mantenendo invariati qualità e sicurezza."
+      },
+      "proposal": "Anagrafica FTE anonimizzata, turni e campionamento delle attività. Separare assistenza diretta, documentazione, amministrazione operativa, coordinamento e tempi di transizione.",
+      "nextStep": "Creare estratto anonimizzato di organico e turni",
+      "compliance": {
+        "level": "critical",
+        "summary": "È la baseline più importante ma anche quella più vicina al monitoraggio del lavoro: anonimizzazione reale e separazione dagli usi HR sono condizioni essenziali.",
+        "checks": [
+          { "area": "GDPR", "action": "Ridurre variabili identificanti e accorpare celle piccole", "trigger": "Centro, professione, turno e anzianità possono re-identificare una persona anche senza nome." },
+          { "area": "Art. 4", "action": "Vagliare qualsiasi raccolta automatica o log nominativo", "trigger": "Il time tracking sistematico può consentire controllo a distanza dell'attività." },
+          { "area": "Esterni", "action": "Classificare rapporto e coinvolgere fornitore o agenzia", "trigger": "La Fondazione non esercita gli stessi poteri verso appaltati, somministrati e professionisti." }
+        ],
+        "gate": "Informativa e metodologia validate, confronto RSU/RSA, dati aggregati e divieto espresso di conseguenze individuali prima del campionamento."
+      },
+      "benefit": {
+        "priorityScore": 65,
+        "primaryType": "Capacità e corretta allocazione del lavoro",
+        "statement": "Individuare carichi squilibrati, attività improprie e ore esterne evitabili senza confondere qualifica contrattuale e mansione reale.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Prerequisito di misura. Nessun beneficio monetario va registrato finché il tempo liberato non produce una riduzione di costi o maggiore capacità misurata.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "Tutte le UdO", "type": "Trasversale", "evidence": "Il dato aggregato non consente di confrontare centro e ruolo." },
+        { "name": "RSD San Fermo", "type": "Residenziale", "evidence": "Turni 24/7 e molteplicità di attività assistenziali e documentali." },
+        { "name": "CDD Bobbiate", "type": "Diurno", "evidence": "Buon contesto per distinguere attività educativa, assistenziale e amministrativa." },
+        { "name": "Sede · Risorse Umane", "type": "Funzione centrale", "evidence": "Contratti, part-time, assenze, formazione e mobilità interna." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Anagrafica FTE, costo e turni per centro", "status": "planned" },
+        { "name": "Disegno", "description": "Tassonomia attività e campione", "status": "planned" },
+        { "name": "Pilota", "description": "10 giornate in 4 contesti", "status": "planned" },
+        { "name": "Scala", "description": "Revisione ruoli, carichi e supporti", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "FTE effettivi per ruolo/centro", "baseline": "Non disponibile", "target": "100% classificati", "source": "HR + turni" },
+        { "name": "Tempo in assistenza diretta", "baseline": "Da misurare", "target": "Trend, non quota imposta", "source": "Campionamento" },
+        { "name": "Tempo amministrativo eliminabile", "baseline": "Da misurare", "target": "-20% nel pilota", "source": "Prima/dopo" },
+        { "name": "Straordinario e sostituzioni", "baseline": "Da acquisire", "target": "-10%", "source": "Paghe + turni" }
+      ],
+      "dataNeeds": [
+        "ID anonimizzato, centro, qualifica, ore contrattuali e costo",
+        "Turni e ore effettivamente lavorate per mese",
+        "Ruoli di coordinamento o amministrativi svolti da profili assistenziali",
+        "Assenze, formazione, riunioni e sostituzioni",
+        "Campione di attività per ruolo, fascia e giorno della settimana"
+      ],
+      "risks": [
+        { "name": "Sorveglianza", "detail": "La rilevazione deve misurare il processo, non valutare individualmente le persone." },
+        { "name": "Classificazione", "detail": "La qualifica contrattuale non coincide con la mansione effettiva." }
+      ],
+      "notes": "Prerequisito per qualsiasi stima seria di capacità liberata o personale esterno evitabile."
+    },
+    {
+      "id": "INT-09",
+      "title": "Registro KPI, impatto e reporting direzionale",
+      "status": "proposal",
+      "confidence": 45,
+      "axisIds": ["reputazione", "innovazione", "sostenibilita"],
+      "owner": "Direzione Generale · Qualità · Comunicazione · Controllo di Gestione",
+      "summary": "Creare un registro unico degli indicatori strategici con definizione, proprietario, fonte, frequenza, qualità del dato e collegamento alle decisioni.",
+      "problem": "I documenti pubblici contengono numerosi dati, ma manca una vista operativa che distingua baseline verificate, obiettivi, stime e ipotesi da validare.",
+      "essay": {
+        "overview": "Il piano strategico diventa governabile quando ogni obiettivo ha pochi indicatori coerenti, una fonte, un responsabile e una decisione associata. Un cruscotto ricco di numeri ma privo di definizioni comuni può aumentare il lavoro di reporting e generare discussioni sulla versione corretta del dato. Questo intervento mira quindi a ridurre l'ambiguità prima di aumentare la quantità di report.",
+        "analysis": "I documenti pubblici contengono dati economici, di attività, qualità e impatto, ma sono prodotti con frequenze e finalità diverse. Nel progetto corrente le cifre sono già distinte fra dato osservato, scenario e valore da verificare; il passo successivo è formalizzare tale disciplina in un registro KPI. Per ogni indicatore vanno documentati formula, perimetro, frequenza, fonte primaria, owner, controlli di qualità e soglia che richiede una decisione.",
+        "estimateMethod": "Il beneficio diretto si calcola come ore ricorrenti eliminate nella raccolta, riconciliazione e preparazione dei report × costo orario pieno, meno il tempo necessario a mantenere definizioni e qualità. Migliore trasparenza, reputazione e capacità di raccontare l'impatto sono benefici reali ma non vanno convertiti in euro in assenza di una decisione, un finanziamento o un costo evitato causalmente collegato al nuovo sistema.",
+        "missingInformation": "Servono elenco dei report, destinatari, frequenze, persone coinvolte, ore di preparazione, fonti e riconciliazioni manuali. Se oggi il reporting assorbe poche ore e usa già dati coerenti, il beneficio economico sarà modesto ma resterà il valore di governo. Se diversi uffici ricostruiscono ripetutamente gli stessi numeri, un dato certificato e riusabile può liberare capacità. La qualità delle fonti decide quanto lavoro di automazione sia sostenibile.",
+        "decisionRule": "Partire da circa quindici KPI di primo livello collegati alle decisioni del piano strategico, non da un catalogo illimitato. Eliminare indicatori senza utilizzatore o azione associata. Misurare tempi di produzione e numero di rettifiche prima e dopo; monetizzare soltanto ore o costi effettivamente evitati e registrare separatamente miglioramenti di puntualità, completezza e utilizzo nei verbali direzionali."
+      },
+      "proposal": "Governance KPI trimestrale, data owner, semaforo qualità e pacchetto di evidenze riutilizzabile per CdA, finanziatori, ATS e Bilancio Sociale.",
+      "nextStep": "Validare 15 KPI di primo livello con la Direzione",
+      "compliance": {
+        "level": "medium",
+        "summary": "Il registro KPI deve rendere responsabili le decisioni senza accumulare dati individuali o permettere riusi non compatibili con la raccolta originaria.",
+        "checks": [
+          { "area": "Governance dati", "action": "Associare a ogni KPI finalità, owner, granularità e retention", "trigger": "Lo stesso dato può essere lecito per il servizio ma non per valutare una persona." },
+          { "area": "Trasparenza", "action": "Documentare formula, fonte e scostamenti", "trigger": "Indicatori opachi possono produrre decisioni organizzative non verificabili." },
+          { "area": "Conservazione", "action": "Eliminare dati grezzi quando bastano aggregati validati", "trigger": "La misurazione non giustifica conservazione illimitata." }
+        ],
+        "gate": "Nessun KPI nominativo nel cruscotto strategico; eccezioni solo con finalità autonoma, base giuridica, accesso ristretto e procedura approvata."
+      },
+      "benefit": {
+        "priorityScore": 45,
+        "primaryType": "Governance e reputazione",
+        "statement": "Ridurre il tempo di preparazione dei report, evitare versioni incoerenti e rendere verificabile il contributo di ogni cantiere al Piano.",
+        "annualLow": null,
+        "annualHigh": null,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Il beneficio diretto è tempo di reporting; quello reputazionale non va monetizzato senza una decisione o un finanziamento causalmente collegato.",
+        "monetizationStatus": "pending"
+      },
+      "contexts": [
+        { "name": "Sede · Direzione Generale", "type": "Governance", "evidence": "Attuazione del Piano Esecutivo affidata alla Direzione." },
+        { "name": "Sede · Qualità e Innovazione", "type": "Funzione centrale", "evidence": "Presidio di miglioramento, accreditamento e risk management." },
+        { "name": "Sede · Comunicazione", "type": "Funzione centrale", "evidence": "Bilancio Sociale e reputazione istituzionale." },
+        { "name": "Tutte le UdO", "type": "Trasversale", "evidence": "Origine dei dati di servizio e responsabilità del primo controllo." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Inventario indicatori e fonti attuali", "status": "active" },
+        { "name": "Disegno", "description": "Definizioni, owner e soglie", "status": "planned" },
+        { "name": "Pilota", "description": "Cruscotto trimestrale su 15 KPI", "status": "planned" },
+        { "name": "Scala", "description": "Pacchetti CdA, ATS e impatto", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "KPI con definizione e owner", "baseline": "Da censire", "target": "100%", "source": "Registro KPI" },
+        { "name": "KPI aggiornati entro scadenza", "baseline": "Da misurare", "target": ">95%", "source": "Audit aggiornamenti" },
+        { "name": "Indicatori con dato verificato", "baseline": "Da classificare", "target": ">90%", "source": "Semaforo qualità" },
+        { "name": "Tempo preparazione reporting", "baseline": "Da misurare", "target": "-40%", "source": "Rilevazione area" }
+      ],
+      "dataNeeds": [
+        "Piano Strategico Esecutivo 2026-2027 integrale",
+        "KPI già presentati a CdA e Management Team",
+        "Frequenze e responsabilità di aggiornamento correnti",
+        "Fonti primarie e trasformazioni manuali del dato",
+        "Destinatari e decisioni associate a ciascun indicatore"
+      ],
+      "risks": [
+        { "name": "Vanity metrics", "detail": "Un indicatore senza decisione associata aumenta il reporting, non la gestione." },
+        { "name": "Versioni", "detail": "Definizioni diverse dello stesso KPI erodono credibilità e confrontabilità." }
+      ],
+      "notes": "Questo cruscotto costituisce il prototipo del registro, non la sua fonte dati definitiva."
+    },
+    {
+      "id": "INT-10",
+      "title": "Revisione contratti e portafoglio fornitori",
+      "status": "partial",
+      "confidence": 56,
+      "axisIds": ["sostenibilita", "qualita", "reputazione"],
+      "owner": "Direzione Amministrativa · Acquisti · Responsabili UdO",
+      "summary": "Ricostruire il portafoglio fornitori e riesaminare prezzi, volumi, SLA, rinnovi, indicizzazioni e frammentazione per le principali categorie di spesa.",
+      "problem": "I costi 2025 mostrano circa €2,97 milioni di spesa esterna selezionata, escluso il servizio infermieristico già analizzato a parte. Non sono disponibili anagrafica contratti, scadenze, volumi, unità di prezzo, SLA e penali.",
+      "essay": {
+        "overview": "La revisione fornitori non consiste nel chiedere uno sconto uniforme. Il margine può derivare da prezzi unitari, volumi, specifiche e livelli di servizio, aggregazione di acquisti, indicizzazioni, penali applicate o eliminazione di prestazioni non più necessarie. Una riduzione di prezzo che peggiori continuità, igiene, pasti o manutenzione può distruggere più valore di quanto risparmi; per questo la lettura economica deve essere collegata al contratto e alla qualità ricevuta.",
+        "analysis": "Nei costi contabilizzati 2025 sono stati selezionati circa 3,707 milioni di euro di servizi esterni. Sottraendo 742.359,87 euro di infermieristica, trattati nell'intervento dedicato per evitare doppio conteggio, resta un perimetro di circa 2,965 milioni. Le categorie più rilevanti comprendono mensa per circa 1,065 milioni, pulizie per 385.961 euro, manutenzione ordinaria per 374.974 euro, lavanderia esterna per 275.942 euro, distribuzione pasti per 111.450 euro, servizio medico per 97.778 euro e paghe/amministrazione per 88.136 euro.",
+        "estimateMethod": "L'intervallo di 29.650-88.950 euro deriva dall'applicazione dell'1-3% ai 2,965 milioni di spesa selezionata non infermieristica. È un benchmark prudenziale di opportunità, non un risparmio conseguito. Il business case reale si costruisce contratto per contratto: spesa indirizzabile × variazione netta di prezzo o volume, meno costi di gara, transizione, uscita, doppia gestione e rischi di disservizio. Variazioni di quantità dovute all'attività non vanno attribuite alla negoziazione.",
+        "missingInformation": "Mancano albo fornitori, contratti, scadenze, unità di prezzo, volumi, indicizzazioni, rinnovi, SLA, penali, dipendenze e confronti di mercato. Se molti contratti sono vincolati, prossimi a gara o già competitivi, la quota negoziabile e il beneficio scendono. Se la spesa è frammentata, le specifiche sono incoerenti o i rinnovi avvengono senza dati, il potenziale cresce. La qualità misurata e i costi di sostituzione decidono quali categorie affrontare per prime.",
+        "decisionRule": "Ordinare le categorie per valore indirizzabile, prossimità della scadenza, confrontabilità e rischio operativo. Aprire tre piloti con baseline di prezzo, volume e qualità; mantenere requisiti essenziali e scenari di continuità. Registrare il beneficio soltanto dopo fatture o ordini a nuovo valore, normalizzati per quantità e mix, e validati da acquisti e controllo di gestione. L'infermieristica resta esclusa da questo totale."
+      },
+      "proposal": "Creare un registro contratti-fornitori, ricondurre fatture e centri al contratto, individuare rinnovi nei prossimi 12 mesi e aprire tre negoziazioni pilota su categorie ad alto valore e specifiche confrontabili.",
+      "nextStep": "Acquisire libro fornitori, contratti attivi e scadenzario",
+      "compliance": {
+        "level": "high",
+        "summary": "La revisione economica è distinta dalla riorganizzazione del lavoro, ma diventa sindacalmente e lavoristicamente sensibile quando modifica appalti ad alta intensità di personale.",
+        "checks": [
+          { "area": "Contratti", "action": "Verificare scadenze, recesso, clausole sociali, continuità e trattamento dati", "trigger": "Il saving lordo può essere annullato da penali, transizione o obblighi di continuità." },
+          { "area": "Appalto genuino", "action": "Verificare organizzazione, direzione e rischio in capo al fornitore", "trigger": "La gestione diretta del personale dell'appaltatore espone a rischio di somministrazione illecita." },
+          { "area": "Relazioni sindacali", "action": "Attivare informazione preventiva quando si esternalizzano o terziarizzano servizi", "trigger": "È espressamente prevista dal CCNL ANFFAS; cambi di modello possono richiedere ulteriore confronto." }
+        ],
+        "gate": "Nessuna rinegoziazione basata solo sul prezzo: servono mappa del rapporto di lavoro, qualità/SLA, impatto sulle persone e percorso sindacale applicabile."
+      },
+      "benefit": {
+        "priorityScore": 85,
+        "primaryType": "Risparmio diretto e qualità del servizio",
+        "statement": "Ridurre prezzi e dispersione, recuperare prestazioni non conformi e prevenire rinnovi automatici sfavorevoli senza abbassare gli standard assistenziali.",
+        "annualLow": 29650,
+        "annualHigh": 88950,
+        "measuredAnnual": 0,
+        "measuredPeriod": "",
+        "measuredEvidence": "",
+        "basis": "Scenario dell'1%-3% su circa €2,965 milioni di spesa esterna selezionata 2025, esclusi €742.360 di infermieristica. È un'ipotesi di opportunità, non un risparmio acquisito: va limitata alla spesa realmente negoziabile e al netto dei costi di transizione.",
+        "monetizationStatus": "scenario"
+      },
+      "contexts": [
+        { "name": "Sede · HR e Acquisti", "type": "Funzione centrale", "evidence": "Registro contratti, gare, ordini, rinnovi e relazione con i fornitori." },
+        { "name": "Sede · Amministrazione", "type": "Funzione centrale", "evidence": "Libro fornitori, fatture, pagamenti e ricostruzione della spesa annua." },
+        { "name": "Tutte le UdO", "type": "Trasversale", "evidence": "Verifica locale di volumi, qualità percepita, disservizi e prestazioni effettivamente ricevute." },
+        { "name": "RSD San Fermo", "type": "Residenziale", "evidence": "Alta concentrazione di mensa, lavanderia, pulizie e manutenzioni." }
+      ],
+      "phases": [
+        { "name": "Baseline", "description": "Spesa, contratti, scadenze, volumi e SLA", "status": "active" },
+        { "name": "Disegno", "description": "Categorie, opportunità, vincoli e strategia", "status": "blocked" },
+        { "name": "Pilota", "description": "Tre rinnovi o negoziazioni prioritarie", "status": "planned" },
+        { "name": "Scala", "description": "Vendor review trimestrale e scadenzario unico", "status": "planned" }
+      ],
+      "kpis": [
+        { "name": "Spesa esterna selezionata non infermieristica", "baseline": "€2.965.009", "target": "100% ricondotta a contratto", "source": "Costi 2025 + libro fornitori" },
+        { "name": "Contratti con owner, SLA e scadenza", "baseline": "Da censire", "target": "100% categorie prioritarie", "source": "Registro contratti" },
+        { "name": "Saving validato annualizzato", "baseline": "€0 misurati", "target": "€29,7k-€89,0k (scenario)", "source": "Prezzo/volume prima-dopo" },
+        { "name": "Disservizi o penali recuperati", "baseline": "Da acquisire", "target": "Trend decrescente", "source": "Ticket + SLA" }
+      ],
+      "dataNeeds": [
+        "Libro fornitori 2025 con imponibile, centro, conto e numero fatture",
+        "Contratti, allegati economici, indicizzazioni, rinnovi e preavvisi",
+        "Volumi acquistati e unità di prezzo per categoria",
+        "SLA, reclami, non conformità, note di credito e penali",
+        "Vincoli di continuità, accreditamento e sostituibilità del fornitore"
+      ],
+      "risks": [
+        { "name": "Taglio lineare", "detail": "Una percentuale sulla spesa non sostituisce l'analisi di fabbisogno, qualità e costi di transizione." },
+        { "name": "Doppio conteggio", "detail": "Il servizio infermieristico è escluso dal perimetro per non sommare due volte lo stesso beneficio." }
+      ],
+      "notes": "Categorie 2025 più rilevanti: mensa €1,065m; pulizie €386k; manutenzioni ordinarie €375k; lavanderia €276k; distribuzione pasti €111k; servizio medico €98k; paghe €88k."
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-01",
+      "priority": 1,
+      "audience": "Direzione Generale · Comunicazione",
+      "question": "Quali report direzionali o verso stakeholder richiedono oggi più tempo manuale?",
+      "context": "Sede · Reporting",
+      "unlocks": "Priorità del registro KPI e baseline del tempo di reporting",
+      "initiativeIds": ["INT-09"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-02",
+      "priority": 1,
+      "audience": "Direzione Generale",
+      "question": "Quali iniziative del Piano risultano già concluse o già operative e con quali risultati dichiarati?",
+      "context": "Governance del Piano",
+      "unlocks": "Consuntivo degli interventi fatti e benefici già conseguiti",
+      "initiativeIds": ["INT-09"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-03",
+      "priority": 2,
+      "audience": "Direzioni Servizi",
+      "question": "Quali quattro unità operative sono disponibili come campione per dieci giornate di osservazione?",
+      "context": "UdO pilota",
+      "unlocks": "Time study su documentazione e mansioni reali",
+      "initiativeIds": ["INT-02", "INT-08"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-04",
+      "priority": 2,
+      "audience": "Direzione · Qualità",
+      "question": "Quali KPI sono già stati approvati dal CdA o dal Management Team e con quale frequenza?",
+      "context": "Sede · Qualità",
+      "unlocks": "Allineamento del cruscotto alle metriche ufficiali",
+      "initiativeIds": ["INT-09"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-05",
+      "priority": 2,
+      "audience": "Sistemi Informativi · DPO",
+      "question": "Quali casi d'uso AI locale sono autorizzabili e quali dati o decisioni devono restare esclusi?",
+      "context": "Infrastruttura e privacy",
+      "unlocks": "Perimetro tecnico, DPIA e scelta del server",
+      "initiativeIds": ["INT-04"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-06",
+      "priority": 3,
+      "audience": "Direzione Amministrativa · Responsabili UdO",
+      "question": "Quali cinque flussi amministrativi generano più ritardi, errori, solleciti o doppio inserimento?",
+      "context": "Sede e centri",
+      "unlocks": "Selezione dei primi workflow da automatizzare",
+      "initiativeIds": ["INT-03"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-07",
+      "priority": 3,
+      "audience": "Direzioni Servizi · Risorse Umane",
+      "question": "Esistono OSS, educatori o altri profili che svolgono stabilmente mansioni amministrative o di coordinamento?",
+      "context": "Tutte le UdO",
+      "unlocks": "Separazione tra qualifica, mansione reale e capacità assistenziale",
+      "initiativeIds": ["INT-02", "INT-08"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-08",
+      "priority": 3,
+      "audience": "Presa in Carico · Responsabili CDD",
+      "question": "Per gli ultimi venti posti liberati a Melegnano e Bregazzana, quali passaggi hanno determinato i giorni di vuoto?",
+      "context": "CDD Melegnano · CDD Bregazzana",
+      "unlocks": "Business case della saturazione e scelta del collo di bottiglia",
+      "initiativeIds": ["INT-06"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-09",
+      "priority": 4,
+      "audience": "Risorse Umane · Direzioni Servizi",
+      "question": "È disponibile un estratto anonimizzato di FTE, qualifica, centro, costo, turni, assenze e straordinari?",
+      "context": "Organico e turnistica",
+      "unlocks": "Capacità reale, costo pieno e carico per ruolo",
+      "initiativeIds": ["INT-01", "INT-08"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-10",
+      "priority": 4,
+      "audience": "Direzione Amministrativa · Acquisti",
+      "question": "È disponibile il libro fornitori 2025 con spesa, conto, centro, contratto, scadenza e owner?",
+      "context": "Portafoglio fornitori",
+      "unlocks": "Perimetro negoziabile, concentrazione e scadenzario contratti",
+      "initiativeIds": ["INT-10"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-11",
+      "priority": 4,
+      "audience": "Direzione Servizi Adulti · Acquisti",
+      "question": "Possiamo ricevere contratto, fatture e ore del servizio infermieristico per sede, fascia e tariffa?",
+      "context": "RSD San Fermo · RSD Sesto Calende",
+      "unlocks": "Confronto corretto tra fornitura esterna e assunzione",
+      "initiativeIds": ["INT-01"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-12",
+      "priority": 4,
+      "audience": "Presa in Carico · Controllo di Gestione",
+      "question": "Possiamo ottenere richieste ed esiti anonimizzati, posti attivabili, tariffe e costo marginale per servizio?",
+      "context": "Domanda e capacità",
+      "unlocks": "Stima della capacità non supportata e del margine incrementale",
+      "initiativeIds": ["INT-05", "INT-06", "INT-07"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-13",
+      "priority": 5,
+      "audience": "Direzione Generale",
+      "question": "Può essere condiviso il Piano Strategico Esecutivo 2026-2027 integrale con obiettivi, owner, scadenze e target?",
+      "context": "Governance del Piano",
+      "unlocks": "Validazione finale dell'allineamento strategico di tutti i cantieri",
+      "initiativeIds": ["INT-09"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-14",
+      "priority": 5,
+      "audience": "Direzione Generale · Direzioni Servizi",
+      "question": "La Direzione autorizza un time study non individuale di dieci giornate e l'accesso a venti fascicoli anonimizzati?",
+      "context": "Quattro UdO pilota",
+      "unlocks": "Misura attendibile del carico burocratico e dei benefici di automazione",
+      "initiativeIds": ["INT-02", "INT-03", "INT-08"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-15",
+      "priority": 5,
+      "audience": "Direzione Generale · Controllo di Gestione",
+      "question": "Quale regola approviamo per validare un beneficio: baseline, periodo di confronto, costi di implementazione e firma del data owner?",
+      "context": "Tutti i cantieri",
+      "unlocks": "Consuntivo economico senza doppio conteggio o falsi risparmi",
+      "initiativeIds": ["INT-01", "INT-03", "INT-06", "INT-10"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-16",
+      "priority": 5,
+      "audience": "Risorse Umane · Acquisti · Consulente del lavoro",
+      "question": "Per ogni fornitore infermieristico e struttura, il rapporto è appalto, somministrazione o incarico professionale e chi esercita concretamente organizzazione e potere direttivo?",
+      "context": "RSD San Fermo · RSD Sesto Calende",
+      "unlocks": "Qualificazione delle tutele, corretto coinvolgimento dei fornitori e fattibilità legale del make-or-buy",
+      "initiativeIds": ["INT-01", "INT-08", "INT-10"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-17",
+      "priority": 5,
+      "audience": "DPO/RPD · Risorse Umane · Sistemi Informativi",
+      "question": "Quali informative, accordi ex art. 4, autorizzazioni INL, DPIA e nomine privacy coprono già questionari, log applicativi, cartella elettronica e sistemi di monitoraggio?",
+      "context": "Governance privacy e lavoro",
+      "unlocks": "Perimetro lecito del time study, dei piloti digitali e dell'assistente AI locale",
+      "initiativeIds": ["INT-02", "INT-03", "INT-04", "INT-08", "INT-09"],
+      "status": "open",
+      "answer": ""
+    },
+    {
+      "id": "Q-18",
+      "priority": 5,
+      "audience": "Direzione Generale · Risorse Umane · RSU/RSA",
+      "question": "Qual è il percorso di informazione, confronto o contrattazione concordato per rilevazione dei processi, automazione, variazione delle mansioni e possibile riduzione dell'outsourcing?",
+      "context": "Relazioni sindacali",
+      "unlocks": "Calendario dei gate sindacali prima di piloti e decisioni organizzative",
+      "initiativeIds": ["INT-01", "INT-02", "INT-03", "INT-04", "INT-08", "INT-10"],
+      "status": "open",
+      "answer": ""
+    }
+  ],
+  "sources": [
+    {
+      "kind": "Documento ufficiale",
+      "title": "Bilancio Sociale 2025",
+      "use": "Direttrici strategiche, organico, capacità, liste d'attesa, saturazione, progetti 2026 e struttura organizzativa.",
+      "status": "verified",
+      "url": "https://fondazionepiatti.it/wp-content/uploads/2026/05/Fondazione-Piatti-Bilancio-2025.defpdf.pdf"
+    },
+    {
+      "kind": "Documento ufficiale",
+      "title": "Costi Contabilizzati 2025",
+      "use": "Costi e proventi dei centri adulti; concentrazione dei servizi sanitari esterni.",
+      "status": "verified",
+      "url": "https://fondazionepiatti.it/wp-content/uploads/2026/09/Costi-contabilizzati-2025.pdf"
+    },
+    {
+      "kind": "Carte dei Servizi",
+      "title": "RSD San Fermo e RSD Sesto Calende 2026",
+      "use": "Assistenza infermieristica nelle 24 ore, attività cliniche, FaSAS e organizzazione delle prestazioni.",
+      "status": "verified",
+      "url": "https://fondazionepiatti.it/amministrazione-trasparente/"
+    },
+    {
+      "kind": "Contratto collettivo",
+      "title": "CCNL Anffas 2023-2025",
+      "use": "Inquadramento e base economica; artt. 6-7 su informazione, consultazione, confronto, organizzazione del lavoro e innovazioni organizzative.",
+      "status": "verified",
+      "url": "https://www.anffas.net/dld/files/TESTO%20CCNL%20ANFFAS%202023-2025(2).pdf"
+    },
+    {
+      "kind": "Normativa UE",
+      "title": "Regolamento UE 2016/679 (GDPR)",
+      "use": "Principi, basi giuridiche, informativa, privacy by design, sicurezza, responsabili del trattamento e DPIA.",
+      "status": "verified",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+    },
+    {
+      "kind": "Normativa lavoro",
+      "title": "Statuto dei lavoratori · art. 4",
+      "use": "Condizioni per strumenti dai quali possa derivare controllo a distanza, informazione ai lavoratori e utilizzabilità dei dati.",
+      "status": "verified",
+      "url": "https://www.normattiva.it/atto/caricaDettaglioAtto?atto.articolo.numero=4&atto.codiceRedazionale=070U0300&atto.dataPubblicazioneGazzetta=1970-05-27"
+    },
+    {
+      "kind": "Normativa lavoro",
+      "title": "D.Lgs. 81/2015 · somministrazione di lavoro",
+      "use": "Ripartizione dei poteri tra agenzia e utilizzatore, parità di trattamento, sicurezza e diritti sindacali dei somministrati.",
+      "status": "verified",
+      "url": "https://www.lavoro.gov.it/temi-e-priorita/rapporti-di-lavoro-e-relazioni-industriali/focus-on/disciplina-rapporto-lavoro/pagine/contratto-di-somministrazione"
+    },
+    {
+      "kind": "Normativa sicurezza",
+      "title": "D.Lgs. 81/2008 · art. 26",
+      "use": "Cooperazione, coordinamento e rischi da interferenze nei contratti di appalto, opera e somministrazione.",
+      "status": "verified",
+      "url": "https://www.normattiva.it/uri-res/N2Ls?urn%3Anir%3Astato%3Adecreto.legislativo%3A2008%3B81~art26-com3="
+    },
+    {
+      "kind": "Documento interno",
+      "title": "Piano Strategico Esecutivo 2026-2027",
+      "use": "Validazione finale di obiettivi, responsabilità, priorità, scadenze e indicatori del portafoglio.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Dati interni",
+      "title": "Contratto e dettaglio ore del servizio infermieristico",
+      "use": "Tariffe, minimi, ore, fasce e presenze necessarie al business case di internalizzazione.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Dati interni",
+      "title": "Anagrafica FTE, turni e costo del personale",
+      "use": "Capacità reale per centro e distinzione tra qualifica e mansione effettiva.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Dati interni",
+      "title": "Inventario moduli, gestionali e integrazioni",
+      "use": "Quantificazione del carico amministrativo, delle duplicazioni e dei flussi automatizzabili.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Dati interni",
+      "title": "Registro richieste, esiti e tempi di ingresso",
+      "use": "Domanda servibile, capacità non supportata e colli di bottiglia nella presa in carico.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Dati interni",
+      "title": "Libro fornitori, contratti e scadenzario",
+      "use": "Perimetro negoziabile, prezzi unitari, volumi, SLA, rinnovi, indicizzazioni, penali e saving effettivamente validabili.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Documenti interni",
+      "title": "Mappa dei rapporti del personale esterno",
+      "use": "Qualificazione per centro e fornitore di appalto, somministrazione o incarico professionale e ricostruzione del potere direttivo effettivo.",
+      "status": "required",
+      "url": ""
+    },
+    {
+      "kind": "Documenti interni",
+      "title": "Informative, DPIA e accordi sui sistemi di lavoro",
+      "use": "Verifica delle tutele già esistenti per questionari, log applicativi, cartella elettronica, time study e strumenti digitali.",
+      "status": "required",
+      "url": ""
+    }
+  ]
+}

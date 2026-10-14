@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cruscotto operativo per collegare interventi, KPI e contesti al Piano Strategico di Fondazione Renato Piatti.">
+  <title>Piano in azione · Fondazione Piatti</title>
+  <link rel="stylesheet" href="./styles.css?v=20261014.4">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="side-rail" aria-label="Navigazione principale">
+      <div class="brand-mark" aria-label="Fondazione Renato Piatti">RP</div>
+      <nav class="main-nav">
+        <button class="nav-item is-active" data-view="portfolio" aria-label="Portafoglio" title="Portafoglio">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-13Z"/><path d="M8 8h8M8 12h5M8 16h7"/></svg>
+          <span>Portafoglio</span>
+        </button>
+        <button class="nav-item" data-view="benefits" aria-label="Benefici" title="Benefici">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V9M10 18V5M16 18v-7M3 18h18"/><path d="m15 6 2-2 2 2M17 4v5"/></svg>
+          <span>Benefici</span>
+        </button>
+        <button class="nav-item" data-view="logic" aria-label="Ordine logico e tutele" title="Ordine logico e tutele">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="18" r="2"/><path d="M8 6h3a3 3 0 0 1 3 3v0a3 3 0 0 0 3 3M8 18h3a3 3 0 0 0 3-3v0a3 3 0 0 1 3-3"/></svg>
+          <span>Logica</span>
+        </button>
+        <button class="nav-item" data-view="contexts" aria-label="Contesti" title="Contesti">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+          <span>Contesti</span>
+        </button>
+        <button class="nav-item" data-view="roadmap" aria-label="Roadmap" title="Roadmap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M19 4v16M5 7h8l-2 3 2 3H5M19 15h-8l2-3-2-3h8"/></svg>
+          <span>Roadmap</span>
+        </button>
+        <button class="nav-item" data-view="sources" aria-label="Fonti" title="Fonti">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6V3Z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>
+          <span>Fonti</span>
+        </button>
+        <button class="nav-item" data-view="questions" aria-label="Domande" title="Domande">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v12H9l-4 4V4Z"/><path d="M9.6 8.5a2.5 2.5 0 0 1 4.7 1.2c0 1.8-2.3 2-2.3 3.3M12 14.8v.1"/></svg>
+          <span>Domande</span>
+        </button>
+      </nav>
+      <div class="rail-footer"><span>v0.3</span></div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Portafoglio trasformazione · 2026–2027</p>
+          <h1>Piano in azione</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="update-stamp" id="updateStamp">Aggiornato 13 ott 2026</span>
+          <button class="button button-quiet" id="exportButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M8 11l4 4 4-4M5 19h14"/></svg>
+            Esporta JSON
+          </button>
+          <button class="button button-primary" id="addButton">+ Nuovo intervento</button>
+        </div>
+      </header>
+
+      <section class="view-panel is-active" id="view-portfolio" data-view-panel="portfolio">
+        <div class="strategy-banner">
+          <div class="banner-copy">
+            <span class="banner-kicker">Allineamento strategico</span>
+            <h2>Dalla strategia ai luoghi di lavoro.</h2>
+            <p>Ogni intervento collega un obiettivo della Direzione a un processo osservabile, un luogo concreto, un set di dati e una decisione misurabile.</p>
+          </div>
+          <div class="banner-note">
+            <span class="note-icon">!</span>
+            <div>
+              <strong>Validazione necessaria</strong>
+              <span>Le direttrici sono ufficiali; il Piano Esecutivo integrale non è ancora acquisito.</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="metrics" id="metrics" aria-label="Indicatori di sintesi"></section>
+
+        <section class="axis-strip" aria-labelledby="axisTitle">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Piano strategico 2025–2030</p>
+              <h2 id="axisTitle">Cinque direttrici, un solo portafoglio</h2>
+            </div>
+            <button class="text-button" id="clearAxis">Mostra tutte</button>
+          </div>
+          <div class="axis-list" id="axisList"></div>
+        </section>
+
+        <section class="portfolio-section" aria-labelledby="portfolioTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Cantieri prioritari</p>
+              <h2 id="portfolioTitle">Punti di intervento</h2>
+            </div>
+            <div class="result-count" id="resultCount"></div>
+          </div>
+
+          <div class="filter-bar">
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+              <span class="sr-only">Cerca</span>
+              <input id="searchInput" type="search" placeholder="Cerca intervento, luogo o dato…">
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filtra per stato</span>
+              <select id="statusFilter">
+                <option value="all">Tutti gli stati</option>
+                <option value="analyzed">Analizzato</option>
+                <option value="partial">Parzialmente analizzato</option>
+                <option value="verify">Da verificare</option>
+                <option value="proposal">Proposta</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filtra per contesto</span>
+              <select id="contextFilter"><option value="all">Tutti i contesti</option></select>
+            </label>
+            <div class="view-switch" role="group" aria-label="Modalità di visualizzazione">
+              <button class="switch-button is-active" data-layout="cards" aria-label="Schede">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg>
+              </button>
+              <button class="switch-button" data-layout="table" aria-label="Tabella">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="portfolio-grid" id="portfolioGrid"></div>
+        </section>
+      </section>
+
+      <section class="view-panel" id="view-benefits" data-view-panel="benefits">
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow">Valore atteso e valore dimostrato</p>
+            <h2>Benefici e consuntivi</h2>
+            <p>La graduatoria separa scenari economici, benefici non ancora monetizzabili e risultati effettivamente misurati. Un'ora liberata non è un risparmio finché non produce capacità o costo evitato.</p>
+          </div>
+          <div class="method-badge">Previsione ponderata = punto medio × confidenza</div>
+        </div>
+        <div class="benefit-summary" id="benefitSummary"></div>
+        <div class="benefit-method">
+          <strong>Regola di lettura</strong>
+          <span>Il potenziale è un intervallo annuo. Il consuntivo è ammesso solo con baseline, periodo, fonte e owner. Le voci non monetizzate restano visibili ma non entrano nel totale economico.</span>
+        </div>
+        <section class="benefit-section">
+          <div class="section-heading"><div><p class="eyebrow">Ordine per beneficio potenziale</p><h2>Graduatoria interventi</h2></div></div>
+          <div class="benefit-table" id="benefitRank"></div>
+        </section>
+        <section class="benefit-section completed-section">
+          <div class="section-heading"><div><p class="eyebrow">Evidenze ex post</p><h2>Interventi conclusi e benefici misurati</h2></div></div>
+          <div id="completedSummary"></div>
+        </section>
+      </section>
+
+      <section class="view-panel" id="view-logic" data-view-panel="logic">
+        <div class="page-intro logic-intro">
+          <div>
+            <p class="eyebrow">Dipendenze e gate decisionali</p>
+            <h2>Ordine logico degli interventi</h2>
+            <p>La graduatoria economica indica dove può esserci più margine; questa vista indica cosa bisogna conoscere prima di prendere una decisione credibile e quali tutele devono essere attivate lungo il percorso. Non è una sequenza rigida: le raccolte dati possono procedere in parallelo, mentre i gate bloccano soltanto le decisioni che dipendono da quelle evidenze.</p>
+          </div>
+          <div class="logic-intro-aside">
+            <div class="method-badge legal-method-badge">Nuovo · screening legale e sindacale</div>
+            <div class="logic-legend"><span><i class="logic-dot gating"></i> gate decisionale</span><span><i class="logic-dot influencing"></i> raffina la stima</span></div>
+          </div>
+        </div>
+
+        <div class="logic-principle">
+          <div class="logic-principle-mark">≠</div>
+          <div><strong>Impatto economico e priorità logica non coincidono.</strong><span id="logicPrinciple"></span></div>
+        </div>
+
+        <div class="logic-summary" id="logicSummary"></div>
+
+        <section class="logic-section" aria-labelledby="logicPathsTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">Percorsi causali</p><h2 id="logicPathsTitle">Cosa abilita cosa</h2></div>
+          </div>
+          <div class="logic-paths" id="logicPaths"></div>
+        </section>
+
+        <section class="logic-section logic-focus" aria-labelledby="logicFocusTitle">
+          <div class="logic-focus-copy">
+            <p class="eyebrow">Esempio determinante</p>
+            <h2 id="logicFocusTitle">Dalle ore burocratiche all'outsourcing evitabile</h2>
+            <p>Prima si osservano mansioni e tempi effettivi di OSS, infermieri e altri professionisti; poi si separano adempimenti necessari, duplicazioni e attività automatizzabili. Solo dopo un pilota si verifica quante ore tornano realmente sui turni. Quella quota — non tutte le ore teoricamente risparmiate — può ridurre ore esterne, straordinari o nuovo fabbisogno.</p>
+          </div>
+          <div class="logic-formula" aria-label="Formula di conversione della capacità">
+            <span>Tempo amministrativo evitabile</span><b>×</b><span>Tasso di recupero osservato</span><b>×</b><span>Quota convertibile sui turni</span><b>=</b><strong>Capacità interna utilizzabile</strong>
+          </div>
+        </section>
+
+        <section class="logic-section" aria-labelledby="dependencyTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">Matrice delle dipendenze</p><h2 id="dependencyTitle">Relazioni che cambiano le stime</h2></div>
+          </div>
+          <div class="dependency-matrix" id="dependencyMatrix"></div>
+        </section>
+
+        <section class="logic-section" aria-labelledby="gateTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">Criteri di avanzamento</p><h2 id="gateTitle">Tre gate prima di impegnare risorse</h2></div>
+          </div>
+          <div class="decision-gates" id="decisionGates"></div>
+        </section>
+
+        <section class="logic-section legal-governance-section" aria-labelledby="legalFlowTitle">
+          <div class="legal-section-heading">
+            <div>
+              <p class="eyebrow">Tutele dentro il processo decisionale</p>
+              <h2 id="legalFlowTitle">Gate legali, sindacali e privacy</h2>
+              <p id="legalGovernanceNote"></p>
+            </div>
+            <div class="legal-legend" aria-label="Legenda del livello di presidio">
+              <span><i class="legal-dot ready"></i> procedibile con cautele</span>
+              <span><i class="legal-dot review"></i> validazione preventiva</span>
+              <span><i class="legal-dot stop"></i> gate bloccante</span>
+            </div>
+          </div>
+          <div class="legal-flow" id="legalFlow"></div>
+        </section>
+
+        <section class="logic-section legal-grid-section" aria-labelledby="legalRulesTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">Regole di non superamento</p><h2 id="legalRulesTitle">Quando fermare la decisione</h2></div>
+          </div>
+          <div class="legal-principles" id="legalPrinciples"></div>
+        </section>
+
+        <section class="logic-section" aria-labelledby="externalWorkersTitle">
+          <div class="section-heading">
+            <div><p class="eyebrow">Personale infermieristico esterno</p><h2 id="externalWorkersTitle">La tutela dipende dal contratto effettivo</h2></div>
+          </div>
+          <div class="external-worker-table" id="externalWorkers"></div>
+          <p class="legal-source-note" id="legalSourceNote"></p>
+        </section>
+      </section>
+
+      <section class="view-panel" id="view-contexts" data-view-panel="contexts">
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow">Dove osservare e dove agire</p>
+            <h2>Mappa dei contesti</h2>
+            <p>La vista aggrega i cantieri per struttura o funzione, evidenziando quali informazioni raccogliere sul campo.</p>
+          </div>
+          <div class="context-legend"><span class="dot dot-ready"></span> evidenze disponibili <span class="dot dot-open"></span> raccolta dati aperta</div>
+        </div>
+        <div class="context-grid" id="contextGrid"></div>
+      </section>
+
+      <section class="view-panel" id="view-roadmap" data-view-panel="roadmap">
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow">Sequenza di esecuzione</p>
+            <h2>Roadmap per fasi</h2>
+            <p>Le fasi non indicano date promesse: mostrano la maturità del cantiere e il prossimo passaggio verificabile.</p>
+          </div>
+        </div>
+        <div class="roadmap-legend">
+          <span><i class="phase-dot done"></i> completata</span>
+          <span><i class="phase-dot active"></i> in corso</span>
+          <span><i class="phase-dot planned"></i> pianificata</span>
+          <span><i class="phase-dot blocked"></i> bloccata da dati</span>
+        </div>
+        <div class="roadmap-table" id="roadmapTable"></div>
+      </section>
+
+      <section class="view-panel" id="view-sources" data-view-panel="sources">
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow">Tracciabilità delle decisioni</p>
+            <h2>Fonti ed evidenze</h2>
+            <p>Ogni numero dovrebbe avere un proprietario, una fonte e una data di aggiornamento. Qui distinguiamo ciò che è già verificato da ciò che deve essere richiesto internamente.</p>
+          </div>
+          <button class="button button-quiet danger" id="resetButton">Ripristina base</button>
+        </div>
+        <div class="source-summary" id="sourceSummary"></div>
+        <div class="source-list" id="sourceList"></div>
+      </section>
+
+      <section class="view-panel" id="view-questions" data-view-panel="questions">
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow">Registro unico per la Direzione</p>
+            <h2>Domande da porre</h2>
+            <p>Ordine crescente: 1 = informazione utile, 5 = informazione bloccante. Ogni risposta deve sbloccare una decisione o una misura.</p>
+          </div>
+          <div class="priority-scale"><span>1 Utile</span><i></i><i></i><i></i><i></i><i></i><span>5 Bloccante</span></div>
+        </div>
+        <div class="question-summary" id="questionSummary"></div>
+        <div class="question-list" id="questionList"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="detail-drawer" id="detailDrawer" aria-hidden="true" aria-label="Dettaglio intervento">
+    <div class="drawer-header">
+      <div><p class="eyebrow" id="drawerCode"></p><h2 id="drawerTitle"></h2></div>
+      <button class="icon-button" id="closeDrawer" aria-label="Chiudi">×</button>
+    </div>
+    <div class="drawer-content" id="drawerContent"></div>
+  </aside>
+
+  <dialog class="modal" id="addModal">
+    <form method="dialog" id="addForm">
+      <div class="modal-header"><div><p class="eyebrow">Portafoglio</p><h2>Nuovo intervento</h2></div><button class="icon-button" value="cancel" aria-label="Chiudi">×</button></div>
+      <div class="form-grid">
+        <label class="form-field full"><span>Titolo</span><input name="title" required placeholder="Es. Automatizzare il ciclo acquisti"></label>
+        <label class="form-field"><span>Direttrice principale</span><select name="axis" id="newAxis" required></select></label>
+        <label class="form-field"><span>Stato</span><select name="status"><option value="proposal">Proposta</option><option value="verify">Da verificare</option><option value="partial">Parzialmente analizzato</option></select></label>
+        <label class="form-field full"><span>Contesto iniziale</span><input name="context" required placeholder="Es. Sede amministrativa · Area acquisti"></label>
+        <label class="form-field full"><span>Problema / opportunità</span><textarea name="summary" rows="4" required placeholder="Descrivi il processo osservabile e l'esito atteso"></textarea></label>
+      </div>
+      <div class="modal-actions"><button class="button button-quiet" value="cancel">Annulla</button><button class="button button-primary" value="default">Aggiungi al portafoglio</button></div>
+    </form>
+  </dialog>
+
+  <template id="emptyStateTemplate">
+    <div class="empty-state"><div class="empty-icon">⌕</div><h3>Nessun intervento trovato</h3><p>Prova a rimuovere un filtro o a usare una ricerca più ampia.</p></div>
+  </template>
+
+  <script src="./app.js?v=20261014.4" defer></script>
+</body>
+</html>
